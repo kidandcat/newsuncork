@@ -8,8 +8,6 @@ import server from "/src/server";
 import "./css/base.css";
 
 const actions = setupActions(server);
-setupListeners(server, actions);
-
-// Render
 const main = app(state, actions, Root, document.body);
+setupListeners(server, main);
 const unsubscribe = location.subscribe(main.location);
