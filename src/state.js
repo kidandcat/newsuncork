@@ -1,6 +1,6 @@
 import { location } from "@hyperapp/router";
 
-export default {
-  products: [],
+export const state = {
+  products: [{ name: "No products" }],
   location: location.state
 };

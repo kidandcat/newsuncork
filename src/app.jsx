@@ -3,7 +3,7 @@ import { Root } from "/src/components/Root";
 import { setupActions } from "/src/actions";
 import { setupListeners } from "/src/listeners";
 import { location } from "@hyperapp/router";
-import state from "/src/state";
+import { state } from "/src/state";
 import server from "/src/server";
 import "./css/base.css";
 

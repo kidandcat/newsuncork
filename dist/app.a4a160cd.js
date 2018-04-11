@@ -1006,7 +1006,7 @@ var setupActions = exports.setupActions = function setupActions(server) {
     getProducts: function getProducts() {
       return function (state, actions) {
         server.service("product").find().then(function (prods) {
-          return actions.addProducts(prods.data);
+          return actions.addProducts(prods);
         });
       };
     }
@@ -1030,11 +1030,12 @@ var setupListeners = exports.setupListeners = function setupListeners(server, ac
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.state = undefined;
 
 var _router = require("@hyperapp/router");
 
-exports.default = {
-  products: [],
+var state = exports.state = {
+  products: [{ name: "No products" }],
   location: _router.location.state
 };
 },{"@hyperapp/router":10}],44:[function(require,module,exports) {
@@ -11406,8 +11407,6 @@ var _router = require("@hyperapp/router");
 
 var _state = require("/src/state");
 
-var _state2 = _interopRequireDefault(_state);
-
 var _server = require("/src/server");
 
 var _server2 = _interopRequireDefault(_server);
@@ -11417,10 +11416,10 @@ require("./css/base.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var actions = (0, _actions.setupActions)(_server2.default);
-var main = (0, _hyperapp.app)(_state2.default, actions, _Root.Root, document.body);
+var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],105:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],106:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11589,5 +11588,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[105,2])
+},{}]},{},[106,2])
 //# sourceMappingURL=/app.a4a160cd.map

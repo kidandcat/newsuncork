@@ -15,6 +15,6 @@ export const setupActions = server => ({
     server
       .service("product")
       .find()
-      .then(prods => actions.addProducts(prods.data));
+      .then(prods => actions.addProducts(prods));
   }
 });
