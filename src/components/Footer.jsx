@@ -2,7 +2,7 @@ import { h } from "hyperapp";
 
 export const Footer = () => (state, actions) => (
   <div class="footer">
-    <div class="uk-container uk-text-center uk-position-relative">
+    <div class="uk-container uk-text-center">
       <ul
         uk-margin=""
         class="uk-width-1-1 uk-subnav uk-flex-inline uk-flex-center uk-margin-remove-bottom"

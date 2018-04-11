@@ -771,7 +771,7 @@ var Footer = exports.Footer = function Footer() {
       { "class": "footer" },
       (0, _hyperapp.h)(
         "div",
-        { "class": "uk-container uk-text-center uk-position-relative" },
+        { "class": "uk-container uk-text-center" },
         (0, _hyperapp.h)(
           "ul",
           {
@@ -957,7 +957,12 @@ var Root = exports.Root = function Root(state, actions) {
     (0, _hyperapp.h)(_Header.Header, null),
     (0, _hyperapp.h)(
       "div",
-      { "class": "uk-container" },
+      {
+        "class": "uk-container",
+        style: {
+          minHeight: "calc(100vh - 169px)"
+        }
+      },
       (0, _hyperapp.h)(
         _router.Switch,
         null,
@@ -11419,7 +11424,7 @@ var actions = (0, _actions.setupActions)(_server2.default);
 var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],106:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],112:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11588,5 +11593,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[106,2])
+},{}]},{},[112,2])
 //# sourceMappingURL=/app.a4a160cd.map

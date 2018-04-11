@@ -10,7 +10,12 @@ import { Route, Switch } from "@hyperapp/router";
 export const Root = (state, actions) => (
   <div>
     <Header />
-    <div class="uk-container">
+    <div
+      class="uk-container"
+      style={{
+        minHeight: "calc(100vh - 169px)"
+      }}
+    >
       <Switch>
         <Route path="/" render={ProductIndex} />
         <Route path="/product" render={ProductInfo} />

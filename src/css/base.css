@@ -7,14 +7,6 @@ body {
   overflow-y: scroll;
 }
 
-.back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-}
-
 .seven {
   font-size: 0.7rem;
   color: black;
@@ -28,40 +20,6 @@ body {
 .six {
   font-size: 0.6rem;
   color: black;
-}
-
-.front {
-  z-index: 1;
-}
-
-.back {
-  opacity: 0;
-  z-index: 2;
-  background-color: white;
-  transition: all 0.5s linear;
-  display: flex;
-  flex-direction: column;
-}
-
-.back:hover {
-  opacity: 0.7;
-}
-
-.back .name,
-.back .description {
-  padding: 40px;
-  text-align: center;
-  display: inline-block;
-  flex: 1;
-  color: black;
-}
-
-.back .name {
-  font-size: 2em;
-}
-
-.back .description {
-  font-size: 1.4em;
 }
 
 .navbar {
@@ -112,10 +70,7 @@ body {
 }
 
 .footer {
-  padding: 10px;
   border-top: none;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
