@@ -672,8 +672,7 @@ var _hyperapp = require("hyperapp");
 
 var _router = require("@hyperapp/router");
 
-var Header = exports.Header = function Header(_ref) {
-  var action = _ref.action;
+var Header = exports.Header = function Header() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
@@ -713,7 +712,7 @@ var Header = exports.Header = function Header(_ref) {
               { "class": "uk-active" },
               (0, _hyperapp.h)(
                 "a",
-                { href: "/" },
+                null,
                 (0, _hyperapp.h)("img", {
                   style: {
                     maxHeight: "170px"
@@ -765,8 +764,7 @@ exports.Footer = undefined;
 
 var _hyperapp = require("hyperapp");
 
-var Footer = exports.Footer = function Footer(_ref) {
-  var action = _ref.action;
+var Footer = exports.Footer = function Footer() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
@@ -826,7 +824,7 @@ var Footer = exports.Footer = function Footer(_ref) {
     );
   };
 };
-},{"hyperapp":5}],10:[function(require,module,exports) {
+},{"hyperapp":5}],11:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -836,8 +834,7 @@ exports.ProductInfo = undefined;
 
 var _hyperapp = require("hyperapp");
 
-var ProductInfo = exports.ProductInfo = function ProductInfo(_ref) {
-  var action = _ref.action;
+var ProductInfo = exports.ProductInfo = function ProductInfo() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
@@ -846,7 +843,7 @@ var ProductInfo = exports.ProductInfo = function ProductInfo(_ref) {
     );
   };
 };
-},{"hyperapp":5}],11:[function(require,module,exports) {
+},{"hyperapp":5}],10:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -858,8 +855,7 @@ var _hyperapp = require("hyperapp");
 
 var _router = require("@hyperapp/router");
 
-var ProductIndex = exports.ProductIndex = function ProductIndex(_ref) {
-  var action = _ref.action;
+var ProductIndex = exports.ProductIndex = function ProductIndex() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
@@ -920,7 +916,7 @@ var Root = exports.Root = function Root(state, actions) {
     (0, _hyperapp.h)(_Footer.Footer, null)
   );
 };
-},{"hyperapp":5,"/src/components/Header":8,"/src/components/Footer":9,"/src/components/ProductInfo":10,"/src/components/ProductIndex":11,"@hyperapp/router":6}],17:[function(require,module,exports) {
+},{"hyperapp":5,"/src/components/Header":8,"/src/components/Footer":9,"/src/components/ProductInfo":11,"/src/components/ProductIndex":10,"@hyperapp/router":6}],17:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -1037,7 +1033,7 @@ var actions = {
 var main = (0, _hyperapp.app)(state, actions, _Root.Root, document.body);
 
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":5,"/src/components/Root":4,"@hyperapp/router":6,"./css/base.css":3}],26:[function(require,module,exports) {
+},{"hyperapp":5,"/src/components/Root":4,"@hyperapp/router":6,"./css/base.css":3}],24:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -1067,7 +1063,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62189' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49812' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -1206,5 +1202,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[26,2])
+},{}]},{},[24,2])
 //# sourceMappingURL=/app.a4a160cd.map

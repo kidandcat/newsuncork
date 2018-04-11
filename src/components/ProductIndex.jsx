@@ -1,7 +1,7 @@
 import { h } from "hyperapp";
 import { Link } from "@hyperapp/router";
 
-export const ProductIndex = ({ action }) => (state, actions) => (
+export const ProductIndex = () => (state, actions) => (
   <div>
     <div uk-grid class="uk-grid-medium uk-grid-match uk-flex-center">
       <div>

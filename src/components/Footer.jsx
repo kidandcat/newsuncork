@@ -1,6 +1,6 @@
 import { h } from "hyperapp";
 
-export const Footer = ({ action }) => (state, actions) => (
+export const Footer = () => (state, actions) => (
   <div class="footer">
     <div class="uk-container uk-text-center uk-position-relative">
       <ul

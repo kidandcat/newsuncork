@@ -1,7 +1,7 @@
 import { h } from "hyperapp";
 import { Link } from "@hyperapp/router";
 
-export const Header = ({ action }) => (state, actions) => (
+export const Header = () => (state, actions) => (
   <div
     onclick={() => {
       actions.location.go("/");
@@ -20,7 +20,7 @@ export const Header = ({ action }) => (state, actions) => (
       <div class="uk-navbar-center">
         <ul class="uk-navbar-nav">
           <li class="uk-active">
-            <a href="/">
+            <a>
               <img
                 style={{
                   maxHeight: "170px"
