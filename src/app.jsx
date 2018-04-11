@@ -1,24 +1,15 @@
 import { app } from "hyperapp";
 import { Root } from "/src/components/Root";
+import { setupActions } from "/src/actions";
+import { setupListeners } from "/src/listeners";
 import { location } from "@hyperapp/router";
+import state from "/src/state";
+import server from "/src/server";
 import "./css/base.css";
 
-// State
-const state = {
-  count: 0,
-  location: location.state
-};
-
-// Actions
-const actions = {
-  location: location.actions,
-  down: v => state => ({ count: state.count - v }),
-  up: v => state => ({ count: state.count + v }),
-  adown: v => (state, actions) => setTimeout(() => actions.down(v), 1000),
-  aup: v => (state, actions) => setTimeout(() => actions.up(v), 1000)
-};
+const actions = setupActions(server);
+setupListeners(server, actions);
 
 // Render
 const main = app(state, actions, Root, document.body);
-
 const unsubscribe = location.subscribe(main.location);
