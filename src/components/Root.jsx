@@ -13,7 +13,7 @@ export const Root = (state, actions) => (
     <div
       class="uk-container"
       style={{
-        minHeight: "calc(100vh - 169px)"
+        minHeight: "100vh"
       }}
     >
       <Switch>

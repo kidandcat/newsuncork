@@ -843,6 +843,32 @@ var ProductInfo = exports.ProductInfo = function ProductInfo() {
     );
   };
 };
+},{"hyperapp":9}],97:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SmallProduct = undefined;
+
+var _hyperapp = require("hyperapp");
+
+var SmallProduct = exports.SmallProduct = function SmallProduct(_ref, Children) {
+  var click = _ref.click;
+  return (0, _hyperapp.h)(
+    "div",
+    {
+      "class": "uk-card uk-card-default uk-card-hover uk-card-body",
+      style: {
+        cursor: "pointer",
+        margin: "10px",
+        marginTop: "20px"
+      },
+      onclick: click
+    },
+    Children
+  );
+};
 },{"hyperapp":9}],15:[function(require,module,exports) {
 "use strict";
 
@@ -855,6 +881,8 @@ var _hyperapp = require("hyperapp");
 
 var _router = require("@hyperapp/router");
 
+var _SmallProduct = require("/src/components/SmallProduct");
+
 var ProductIndex = exports.ProductIndex = function ProductIndex() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
@@ -862,45 +890,34 @@ var ProductIndex = exports.ProductIndex = function ProductIndex() {
       null,
       (0, _hyperapp.h)(
         "div",
-        { "uk-grid": true, "class": "uk-grid-medium uk-grid-match uk-flex-center" },
+        null,
+        "Products:",
         (0, _hyperapp.h)(
           "div",
-          null,
-          "Products:",
-          (0, _hyperapp.h)(
-            "div",
-            null,
-            state.products.map(function (p) {
-              return (0, _hyperapp.h)(
-                "div",
-                null,
-                p.name
-              );
-            })
-          ),
-          (0, _hyperapp.h)(
-            _router.Link,
-            { to: "/product" },
-            "Product"
-          ),
-          (0, _hyperapp.h)(
-            "button",
-            { onclick: actions.getProducts },
-            "Get products"
-          ),
-          (0, _hyperapp.h)(
-            "button",
-            { onclick: function onclick() {
-                return actions.createProduct({ name: "ok" });
-              } },
-            "add product"
-          )
-        )
+          { "uk-grid": true, "class": "uk-grid-medium uk-grid-match uk-flex-center" },
+          state.products.map(function (p) {
+            return (0, _hyperapp.h)(
+              _SmallProduct.SmallProduct,
+              { click: function click() {
+                  return actions.location.go("/product");
+                } },
+              p.name
+            );
+          })
+        ),
+        (0, _hyperapp.h)(
+          "button",
+          { onclick: function onclick() {
+              return actions.createProduct({ name: "ok" });
+            } },
+          "add product"
+        ),
+        actions.getProducts()
       )
     );
   };
 };
-},{"hyperapp":9,"@hyperapp/router":10}],16:[function(require,module,exports) {
+},{"hyperapp":9,"@hyperapp/router":10,"/src/components/SmallProduct":97}],16:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -960,7 +977,7 @@ var Root = exports.Root = function Root(state, actions) {
       {
         "class": "uk-container",
         style: {
-          minHeight: "calc(100vh - 169px)"
+          minHeight: "100vh"
         }
       },
       (0, _hyperapp.h)(
@@ -1043,7 +1060,7 @@ var state = exports.state = {
   products: [{ name: "No products" }],
   location: _router.location.state
 };
-},{"@hyperapp/router":10}],44:[function(require,module,exports) {
+},{"@hyperapp/router":10}],45:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -1221,7 +1238,7 @@ exports.makeUrl = function makeUrl(path) {
 
   return protocol + '://' + host + port + '/' + exports.stripSlashes(path);
 };
-},{}],45:[function(require,module,exports) {
+},{}],46:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var { each: each, pick: pick } = require('./utils')._;
@@ -1476,7 +1493,7 @@ exports.enableHooks = function enableHooks(obj, methods, types) {
     }
   });
 };
-},{"./utils":44}],46:[function(require,module,exports) {
+},{"./utils":45}],47:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var paramCounts = {
@@ -1535,7 +1552,7 @@ exports.validateArguments = function validateArguments(method, args) {
 
   return true;
 };
-},{}],47:[function(require,module,exports) {
+},{}],48:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var { _: _ } = require('./utils');
@@ -1591,14 +1608,14 @@ module.exports = function (query, paginate) {
 
   return { filters: filters, query: _.omit.apply(_, [query].concat(PROPERTIES)) };
 };
-},{"./utils":44}],33:[function(require,module,exports) {
+},{"./utils":45}],33:[function(require,module,exports) {
 var utils = require('./utils');
 var hooks = require('./hooks');
 var args = require('./arguments');
 var filterQuery = require('./filter-query');
 
 module.exports = Object.assign({}, utils, args, { hooks: hooks, filterQuery: filterQuery });
-},{"./utils":44,"./hooks":45,"./arguments":46,"./filter-query":47}],34:[function(require,module,exports) {
+},{"./utils":45,"./hooks":46,"./arguments":47,"./filter-query":48}],34:[function(require,module,exports) {
 /* global define */
 /**
  * A base object for ECMAScript 5 style prototypal inheritance.
@@ -1742,7 +1759,7 @@ module.exports = Object.assign({}, utils, args, { hooks: hooks, filterQuery: fil
 
 }));
 
-},{}],68:[function(require,module,exports) {
+},{}],69:[function(require,module,exports) {
 /**
  * Helpers.
  */
@@ -2123,7 +2140,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],40:[function(require,module,exports) {
+},{"ms":69}],40:[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {};
@@ -2484,7 +2501,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":62,"process":40}],61:[function(require,module,exports) {
+},{"./debug":62,"process":40}],60:[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2837,7 +2854,7 @@ module.exports = function () {
     app.mixins.push(eventMixin);
   };
 };
-},{"events":61,"uberproto":34}],38:[function(require,module,exports) {
+},{"events":60,"uberproto":34}],38:[function(require,module,exports) {
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var { hooks: hooks, validateArguments: validateArguments, isPromise: isPromise } = require('@feathersjs/commons');
@@ -3384,7 +3401,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],81:[function(require,module,exports) {
+},{"ms":69}],76:[function(require,module,exports) {
 var process = require("process");
 /**
  * This is the web browser implementation of `debug()`.
@@ -3558,7 +3575,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":86,"process":40}],69:[function(require,module,exports) {
+},{"./debug":86,"process":40}],68:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var debug = require('debug')('@feathersjs/errors');
@@ -3810,7 +3827,7 @@ function convert(error) {
 }
 
 module.exports = Object.assign({ convert: convert }, errors);
-},{"debug":81}],73:[function(require,module,exports) {
+},{"debug":76}],72:[function(require,module,exports) {
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -4037,7 +4054,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],66:[function(require,module,exports) {
+},{"ms":69}],66:[function(require,module,exports) {
 var process = require("process");
 /**
  * This is the web browser implementation of `debug()`.
@@ -4211,7 +4228,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":73,"process":40}],49:[function(require,module,exports) {
+},{"./debug":72,"process":40}],44:[function(require,module,exports) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4373,9 +4390,9 @@ module.exports = function () {
 
   return Service;
 }();
-},{"@feathersjs/errors":69,"debug":66}],36:[function(require,module,exports) {
+},{"@feathersjs/errors":68,"debug":66}],35:[function(require,module,exports) {
 module.exports = require('./lib/client');
-},{"./lib/client":49}],23:[function(require,module,exports) {
+},{"./lib/client":44}],23:[function(require,module,exports) {
 var Service = require('@feathersjs/transport-commons/client');
 
 function socketioClient(connection, options) {
@@ -4417,7 +4434,7 @@ function socketioClient(connection, options) {
 
 module.exports = socketioClient;
 module.exports.default = socketioClient;
-},{"@feathersjs/transport-commons/client":36}],52:[function(require,module,exports) {
+},{"@feathersjs/transport-commons/client":35}],52:[function(require,module,exports) {
 /**
  * Parses an URI
  *
@@ -4458,7 +4475,7 @@ module.exports = function parseuri(str) {
     return uri;
 };
 
-},{}],48:[function(require,module,exports) {
+},{}],49:[function(require,module,exports) {
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -4685,7 +4702,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],32:[function(require,module,exports) {
+},{"ms":69}],32:[function(require,module,exports) {
 var process = require("process");
 /**
  * This is the web browser implementation of `debug()`.
@@ -4859,7 +4876,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":48,"process":40}],29:[function(require,module,exports) {
+},{"./debug":49,"process":40}],29:[function(require,module,exports) {
 var global = (1,eval)("this");
 
 /**
@@ -5164,7 +5181,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],60:[function(require,module,exports) {
+},{"ms":69}],59:[function(require,module,exports) {
 var process = require("process");
 /**
  * This is the web browser implementation of `debug()`.
@@ -5338,7 +5355,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":64,"process":40}],50:[function(require,module,exports) {
+},{"./debug":64,"process":40}],51:[function(require,module,exports) {
 
 /**
  * Expose `Emitter`.
@@ -5503,7 +5520,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],59:[function(require,module,exports) {
+},{}],61:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
@@ -5681,7 +5698,7 @@ exports.removeBlobs = function(data, callback) {
   }
 };
 
-},{"isarray":59,"./is-buffer":43}],35:[function(require,module,exports) {
+},{"isarray":61,"./is-buffer":43}],36:[function(require,module,exports) {
 
 /**
  * Module dependencies.
@@ -6100,7 +6117,7 @@ function error(msg) {
   };
 }
 
-},{"debug":60,"component-emitter":50,"./binary":42,"isarray":59,"./is-buffer":43}],89:[function(require,module,exports) {
+},{"debug":59,"component-emitter":51,"./binary":42,"isarray":61,"./is-buffer":43}],89:[function(require,module,exports) {
 
 /**
  * Module exports.
@@ -6119,7 +6136,7 @@ try {
   module.exports = false;
 }
 
-},{}],80:[function(require,module,exports) {
+},{}],81:[function(require,module,exports) {
 var global = (1,eval)("this");
 // browser shim for xmlhttprequest module
 
@@ -6252,7 +6269,7 @@ function hasBinary (obj) {
   return false;
 }
 
-},{"isarray":65}],76:[function(require,module,exports) {
+},{"isarray":65}],77:[function(require,module,exports) {
 /**
  * An abstraction for slicing an arraybuffer even when
  * ArrayBuffer.prototype.slice is not supported
@@ -6283,7 +6300,7 @@ module.exports = function(arraybuffer, start, end) {
   return result.buffer;
 };
 
-},{}],77:[function(require,module,exports) {
+},{}],78:[function(require,module,exports) {
 module.exports = after
 
 function after(count, callback, err_cb) {
@@ -6571,7 +6588,7 @@ var global = (1,eval)("this");
 
 }(this));
 
-},{}],78:[function(require,module,exports) {
+},{}],79:[function(require,module,exports) {
 /*
  * base64-arraybuffer
  * https://github.com/niklasvh/base64-arraybuffer
@@ -6646,7 +6663,7 @@ var global = (1,eval)("this");
     return arraybuffer;
   };
 })();
-},{}],79:[function(require,module,exports) {
+},{}],80:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -7354,7 +7371,7 @@ exports.decodePayloadAsBinary = function (data, binaryType, callback) {
   });
 };
 
-},{"./keys":74,"has-binary2":58,"arraybuffer.slice":76,"after":77,"./utf8":75,"base64-arraybuffer":78,"blob":79}],70:[function(require,module,exports) {
+},{"./keys":74,"has-binary2":58,"arraybuffer.slice":77,"after":78,"./utf8":75,"base64-arraybuffer":79,"blob":80}],70:[function(require,module,exports) {
 /**
  * Module dependencies.
  */
@@ -7513,7 +7530,7 @@ Transport.prototype.onClose = function () {
   this.emit('close');
 };
 
-},{"engine.io-parser":67,"component-emitter":50}],57:[function(require,module,exports) {
+},{"engine.io-parser":67,"component-emitter":51}],57:[function(require,module,exports) {
 /**
  * Compiles a querystring
  * Returns string representation of the object
@@ -7857,7 +7874,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":68}],72:[function(require,module,exports) {
+},{"ms":69}],73:[function(require,module,exports) {
 var process = require("process");
 /**
  * This is the web browser implementation of `debug()`.
@@ -8278,7 +8295,7 @@ Polling.prototype.uri = function () {
   return schema + '://' + (ipv6 ? '[' + this.hostname + ']' : this.hostname) + port + this.path + query;
 };
 
-},{"../transport":70,"parseqs":57,"engine.io-parser":67,"component-inherit":91,"yeast":90,"debug":72,"xmlhttprequest-ssl":80}],82:[function(require,module,exports) {
+},{"../transport":70,"parseqs":57,"engine.io-parser":67,"component-inherit":91,"yeast":90,"debug":73,"xmlhttprequest-ssl":81}],82:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Module requirements.
@@ -8693,7 +8710,7 @@ function unloadHandler () {
   }
 }
 
-},{"xmlhttprequest-ssl":80,"./polling":88,"component-emitter":50,"component-inherit":91,"debug":72}],83:[function(require,module,exports) {
+},{"xmlhttprequest-ssl":81,"./polling":88,"component-emitter":51,"component-inherit":91,"debug":73}],83:[function(require,module,exports) {
 var global = (1,eval)("this");
 
 /**
@@ -9218,7 +9235,7 @@ WS.prototype.check = function () {
   return !!WebSocket && !('__initialize' in WebSocket && this.name === WS.prototype.name);
 };
 
-},{"../transport":70,"engine.io-parser":67,"parseqs":57,"component-inherit":91,"yeast":90,"debug":72,"ws":87}],71:[function(require,module,exports) {
+},{"../transport":70,"engine.io-parser":67,"parseqs":57,"component-inherit":91,"yeast":90,"debug":73,"ws":87}],71:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Module dependencies
@@ -9274,7 +9291,7 @@ function polling (opts) {
   }
 }
 
-},{"xmlhttprequest-ssl":80,"./polling-xhr":82,"./polling-jsonp":83,"./websocket":84}],54:[function(require,module,exports) {
+},{"xmlhttprequest-ssl":81,"./polling-xhr":82,"./polling-jsonp":83,"./websocket":84}],54:[function(require,module,exports) {
 
 var indexOf = [].indexOf;
 
@@ -10031,7 +10048,7 @@ Socket.prototype.filterUpgrades = function (upgrades) {
   return filteredUpgrades;
 };
 
-},{"./transports/index":71,"component-emitter":50,"debug":72,"indexof":54,"engine.io-parser":67,"parseuri":52,"parseqs":57,"./transport":70}],51:[function(require,module,exports) {
+},{"./transports/index":71,"component-emitter":51,"debug":73,"indexof":54,"engine.io-parser":67,"parseuri":52,"parseqs":57,"./transport":70}],50:[function(require,module,exports) {
 
 module.exports = require('./socket');
 
@@ -10546,7 +10563,7 @@ Socket.prototype.binary = function (binary) {
   return this;
 };
 
-},{"socket.io-parser":35,"component-emitter":50,"to-array":56,"./on":39,"component-bind":53,"debug":32,"parseqs":57,"has-binary2":58}],55:[function(require,module,exports) {
+},{"socket.io-parser":36,"component-emitter":51,"to-array":56,"./on":39,"component-bind":53,"debug":32,"parseqs":57,"has-binary2":58}],55:[function(require,module,exports) {
 
 /**
  * Expose `Backoff`.
@@ -11208,7 +11225,7 @@ Manager.prototype.onreconnect = function () {
   this.emitAll('reconnect', attempt);
 };
 
-},{"engine.io-client":51,"./socket":31,"component-emitter":50,"socket.io-parser":35,"./on":39,"component-bind":53,"debug":32,"indexof":54,"backo2":55}],24:[function(require,module,exports) {
+},{"engine.io-client":50,"./socket":31,"component-emitter":51,"socket.io-parser":36,"./on":39,"component-bind":53,"debug":32,"indexof":54,"backo2":55}],24:[function(require,module,exports) {
 
 /**
  * Module dependencies.
@@ -11304,7 +11321,7 @@ exports.connect = lookup;
 exports.Manager = require('./manager');
 exports.Socket = require('./socket');
 
-},{"./url":29,"socket.io-parser":35,"./manager":30,"debug":32,"./socket":31}],8:[function(require,module,exports) {
+},{"./url":29,"socket.io-parser":36,"./manager":30,"debug":32,"./socket":31}],8:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11424,7 +11441,7 @@ var actions = (0, _actions.setupActions)(_server2.default);
 var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],112:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],102:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11454,7 +11471,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64291' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52096' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -11593,5 +11610,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[112,2])
+},{}]},{},[102,2])
 //# sourceMappingURL=/app.a4a160cd.map
