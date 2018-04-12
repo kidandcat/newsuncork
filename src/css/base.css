@@ -1,135 +1,133 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .seven {
-  font-size: 0.7rem;
-  color: black;
+    font-size: 0.7rem;
+    color: black;
 }
 
 .one {
-  font-size: 1rem;
-  color: black;
+    font-size: 1rem;
+    color: black;
 }
 
 .six {
-  font-size: 0.6rem;
-  color: black;
+    font-size: 0.6rem;
+    color: black;
 }
 
 .navbar {
-  border-bottom: none;
-  padding-bottom: 100px;
-  width: 100%;
-  background-color: white !important;
-  z-index: 1000;
-  top: 0;
+    border-bottom: none;
+    padding-bottom: 100px;
+    width: 100%;
+    background-color: white !important;
+    z-index: 1000;
+    top: 0;
 }
 
 .options-container {
-  display: flex;
+    display: flex;
 }
 
 .product-images-container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .big-product-image {
-  max-width: 300px;
+    max-width: 300px;
 }
 
 .small-product-image {
-  flex: 1;
-  padding: 15px;
-  max-width: 150px;
-  cursor: pointer;
+    flex: 1;
+    padding: 15px;
+    max-width: 150px;
+    cursor: pointer;
 }
 
 .options-label {
-  padding: 6px;
-  flex: 1;
+    padding: 6px;
+    flex: 1;
 }
 
 .options-stock {
-  padding: 6px;
+    padding: 6px;
 }
 
 * {
-  font-family: "Noto Sans", sans-serif !important;
+    font-family: "Noto Sans", sans-serif !important;
 }
 
 .cart-link {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .footer {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border-top: none;
-  width: 100%;
+    border-top: none;
+    width: 100%;
 }
 
 .dz-message {
-  display: block !important;
+    display: block !important;
 }
 
 .uk-notification {
-  width: 90% !important;
-  margin-left: 50%;
-  transform: translateX(-50%);
+    width: 90% !important;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .uk-notification-message {
-  font-size: 0.8em !important;
-  line-height: 1em !important;
-  margin: 10px;
+    font-size: 0.8em !important;
+    line-height: 1em !important;
+    margin: 10px;
 }
 
 .uk-navbar-item,
-.uk-navbar-nav > li > a {
-  height: 20px;
+.uk-navbar-nav>li>a {
+    height: 20px;
 }
 
 .uk-navbar-center:not(:only-child) {
-  top: 40%;
+    top: 40%;
 }
 
-.uk-subnav > * > :first-child {
-  display: inline-block;
-  color: black;
-  text-transform: none;
+.uk-subnav>*> :first-child {
+    display: inline-block;
+    color: black;
+    text-transform: none;
 }
 
 .uk-badge {
-  box-sizing: content-box;
-  min-width: 13px;
-  height: 13px;
-  padding: 4px;
-  margin-left: 4px;
-  border-radius: 500px;
-  vertical-align: middle;
-  background: black;
-  color: #fff;
-  font-size: 0.6rem;
-  animation-duration: 2s;
-  animation-name: beat;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: linear;
+    box-sizing: content-box;
+    min-width: 13px;
+    height: 13px;
+    padding: 4px;
+    margin-left: 4px;
+    border-radius: 500px;
+    vertical-align: middle;
+    background: black;
+    color: #fff;
+    font-size: 0.6rem;
+    animation-duration: 2s;
+    animation-name: beat;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
 }
 
 @keyframes beat {
-  from {
-    transform: scale(0.7);
-  }
-  to {
-    transform: scale(1.1);
-  }
+    from {
+        transform: scale(0.7);
+    }
+    to {
+        transform: scale(1.1);
+    }
 }

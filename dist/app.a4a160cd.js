@@ -976,9 +976,7 @@ var Root = exports.Root = function Root(state, actions) {
       "div",
       {
         "class": "uk-container",
-        style: {
-          minHeight: "100vh"
-        }
+        "uk-height-viewport": "offset-top: true; offset-bottom: true"
       },
       (0, _hyperapp.h)(
         _router.Switch,
@@ -1042,7 +1040,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var setupListeners = exports.setupListeners = function setupListeners(server, actions) {
   server.service("product").on("created", function (product) {
-    console.log("Got new product", product);
     actions.productCreated(product);
   });
 };
@@ -11441,7 +11438,7 @@ var actions = (0, _actions.setupActions)(_server2.default);
 var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],102:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],104:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11610,5 +11607,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[102,2])
+},{}]},{},[104,2])
 //# sourceMappingURL=/app.a4a160cd.map

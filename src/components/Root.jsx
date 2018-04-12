@@ -12,9 +12,7 @@ export const Root = (state, actions) => (
     <Header />
     <div
       class="uk-container"
-      style={{
-        minHeight: "100vh"
-      }}
+      uk-height-viewport="offset-top: true; offset-bottom: true"
     >
       <Switch>
         <Route path="/" render={ProductIndex} />
