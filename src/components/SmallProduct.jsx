@@ -5,7 +5,7 @@ export const SmallProduct = ({ click }, Children) => (
     class="uk-card uk-card-default uk-card-hover uk-card-body"
     style={{
       cursor: "pointer",
-      margin: "10px",
+      margin: "20px",
       marginTop: "20px"
     }}
     onclick={click}
