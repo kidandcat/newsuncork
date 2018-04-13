@@ -15,6 +15,12 @@ module.exports = function(app) {
       },
       name: {
         type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.TEXT
+      },
+      image: {
+        type: Sequelize.TEXT
       }
     },
     {

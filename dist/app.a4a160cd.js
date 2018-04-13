@@ -922,7 +922,77 @@ var ProductIndex = exports.ProductIndex = function ProductIndex() {
     );
   };
 };
-},{"hyperapp":9,"@hyperapp/router":10,"/src/components/SmallProduct":26}],16:[function(require,module,exports) {
+},{"hyperapp":9,"@hyperapp/router":10,"/src/components/SmallProduct":26}],108:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ImageUploaderApp = undefined;
+
+var _hyperapp = require("hyperapp");
+
+var state = {
+  count: 0
+};
+
+var actions = {
+  down: function down(value) {
+    return function (state) {
+      return { count: state.count - value };
+    };
+  },
+  up: function up(value) {
+    return function (state) {
+      return { count: state.count + value };
+    };
+  }
+};
+
+var view = function view(state, actions) {
+  return (0, _hyperapp.h)(
+    "div",
+    null,
+    (0, _hyperapp.h)(
+      "h1",
+      null,
+      state.count
+    ),
+    (0, _hyperapp.h)(
+      "button",
+      { onclick: function onclick() {
+          return actions.down(1);
+        } },
+      "-"
+    ),
+    (0, _hyperapp.h)(
+      "button",
+      { onclick: function onclick() {
+          return actions.up(1);
+        } },
+      "+"
+    ),
+    (0, _hyperapp.h)(
+      "div",
+      { "class": "uk-margin" },
+      (0, _hyperapp.h)(
+        "div",
+        { "uk-form-custom": true },
+        (0, _hyperapp.h)("input", { type: "file" }),
+        (0, _hyperapp.h)(
+          "button",
+          { "class": "uk-button uk-button-default", type: "button", tabindex: "-1" },
+          "Select"
+        )
+      )
+    )
+  );
+};
+
+var ImageUploaderApp = exports.ImageUploaderApp = function ImageUploaderApp(element) {
+  return (0, _hyperapp.app)(state, actions, view, element);
+};
+},{"hyperapp":9}],16:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -932,23 +1002,66 @@ exports.CreateProduct = undefined;
 
 var _hyperapp = require("hyperapp");
 
+var _imageUploader = require("/src/apps/image-uploader");
+
 var CreateProduct = exports.CreateProduct = function CreateProduct() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
       null,
-      "create product",
+      (0, _hyperapp.h)(
+        "form",
+        { "class": "uk-form-width-large" },
+        (0, _hyperapp.h)(
+          "fieldset",
+          { "class": "uk-fieldset" },
+          (0, _hyperapp.h)(
+            "div",
+            { "class": "uk-margin" },
+            (0, _hyperapp.h)("input", {
+              "class": "uk-input",
+              oninput: gatherData("name"),
+              type: "text",
+              placeholder: "Name"
+            })
+          ),
+          (0, _hyperapp.h)(
+            "div",
+            { "class": "uk-margin" },
+            (0, _hyperapp.h)("input", {
+              "class": "uk-input",
+              oninput: gatherData("description"),
+              type: "text",
+              placeholder: "Description"
+            })
+          )
+        )
+      ),
+      (0, _hyperapp.h)("div", { oncreate: function oncreate(elem) {
+          return ImageUploaderInstance = (0, _imageUploader.ImageUploaderApp)(elem);
+        } }),
       (0, _hyperapp.h)(
         "button",
         { onclick: function onclick() {
-            return actions.createProduct({ name: "test" });
+            return actions.createProduct(product);
           } },
         "Create"
       )
     );
   };
 };
-},{"hyperapp":9}],17:[function(require,module,exports) {
+
+var product = {};
+var ImageUploaderInstance = void 0;
+
+var gatherData = function gatherData(type) {
+  return function (_ref) {
+    var value = _ref.target.value;
+
+    product[type] = value;
+  };
+};
+},{"hyperapp":9,"/src/apps/image-uploader":108}],17:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11518,7 +11631,7 @@ var actions = (0, _actions.setupActions)(_server2.default);
 var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],103:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],110:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11687,5 +11800,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[103,2])
+},{}]},{},[110,2])
 //# sourceMappingURL=/app.a4a160cd.map
