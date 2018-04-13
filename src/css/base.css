@@ -19,9 +19,7 @@ body {
 
 .uk-offcanvas-bar a {
   box-sizing: border-box !important;
-  padding: 10px 10px 10px 10px !important;
-  margin-top: 15px !important;
-  margin-bottom: 15px !important;
+  padding: 20px 20px 20px 20px !important;
   color: rgb(53, 53, 53) !important;
   font-size: 1em !important;
   border: 1px solid white !important;
@@ -93,6 +91,11 @@ body {
 
 .uk-navbar-sticky {
   padding-bottom: 10px;
+  transition: all 0.3s linear !important;
+}
+
+.navbar {
+  transition: all 0.3s linear !important;
 }
 
 .uk-navbar-sticky .menu-icon,
@@ -101,16 +104,20 @@ body {
 }
 
 .uk-navbar-sticky .logo {
+  transition: all 0.3s linear;
   max-height: 100px;
+  max-width: 110%;
 }
 
 .logo {
+  transition: all 0.3s linear;
   max-height: 170px;
+  max-width: 130%;
 }
 
 .menu-icon {
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 20px;
   cursor: pointer;
 }
 
@@ -120,11 +127,11 @@ body {
 
 .cart {
   margin-top: 40px;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .cart-link {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .footer {

@@ -941,7 +941,7 @@ var CreateProduct = exports.CreateProduct = function CreateProduct() {
       (0, _hyperapp.h)(
         "button",
         { onclick: function onclick() {
-            return createProduct("test");
+            return actions.createProduct({ name: "test" });
           } },
         "Create"
       )
@@ -978,7 +978,7 @@ var SideMenu = exports.SideMenu = function SideMenu() {
         }),
         (0, _hyperapp.h)(
           "ul",
-          { "class": "uk-nav uk-nav-default", "uk-nav": true },
+          { "class": "uk-nav-default", "uk-nav": true },
           (0, _hyperapp.h)(
             "li",
             { "class": "uk-active" },
@@ -995,7 +995,7 @@ var SideMenu = exports.SideMenu = function SideMenu() {
               "a",
               null,
               "Admin",
-              (0, _hyperapp.h)("span", { "class": "uk-float-right", "uk-icon": "icon: chevron-down" })
+              (0, _hyperapp.h)("span", { "class": "uk-float-right", "uk-icon": "chevron-down" })
             ),
             (0, _hyperapp.h)(
               "ul",
@@ -1006,7 +1006,7 @@ var SideMenu = exports.SideMenu = function SideMenu() {
                 (0, _hyperapp.h)(
                   "a",
                   { href: "/admin/product/create" },
-                  (0, _hyperapp.h)("span", { "class": "uk-margin-small-right", "uk-icon": "icon: plus" }),
+                  (0, _hyperapp.h)("span", { "class": "uk-margin-small-right", "uk-icon": "plus" }),
                   "Create Product"
                 )
               )
@@ -11518,7 +11518,7 @@ var actions = (0, _actions.setupActions)(_server2.default);
 var main = (0, _hyperapp.app)(_state.state, actions, _Root.Root, document.body);
 (0, _listeners.setupListeners)(_server2.default, main);
 var unsubscribe = _router.location.subscribe(main.location);
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],102:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],103:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -11687,5 +11687,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[102,2])
+},{}]},{},[103,2])
 //# sourceMappingURL=/app.a4a160cd.map
