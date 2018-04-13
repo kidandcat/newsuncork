@@ -12,6 +12,7 @@ export const SideMenu = () => (state, actions) => (
         type="button"
         uk-close
       />
+      <br />
       <ul class="uk-nav-default" uk-nav>
         <li class="uk-active">
           <a href="/">Home</a>

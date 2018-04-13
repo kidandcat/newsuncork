@@ -22,9 +22,13 @@ export const CreateProduct = () => (state, actions) => (
           />
         </div>
       </fieldset>
+      <div
+        oncreate={elem => (ImageUploaderInstance = ImageUploaderApp(elem))}
+      />
+      <button onclick={() => gatherImages() && actions.createProduct(product)}>
+        Create
+      </button>
     </form>
-    <div oncreate={elem => (ImageUploaderInstance = ImageUploaderApp(elem))} />
-    <button onclick={() => actions.createProduct(product)}>Create</button>
   </div>
 );
 
@@ -33,4 +37,13 @@ let ImageUploaderInstance;
 
 const gatherData = type => ({ target: { value } }) => {
   product[type] = value;
+};
+
+const gatherImages = () => {
+  const imgs = document.querySelectorAll(".product-create-images img");
+  product.images = [];
+  for (let i of imgs) {
+    product.images.push(i.getAttribute("src"));
+  }
+  return true;
 };

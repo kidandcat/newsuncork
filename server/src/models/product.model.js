@@ -19,8 +19,8 @@ module.exports = function(app) {
       description: {
         type: Sequelize.TEXT
       },
-      image: {
-        type: Sequelize.TEXT
+      images: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
       }
     },
     {

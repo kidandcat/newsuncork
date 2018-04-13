@@ -1,13 +1,28 @@
 import { h, app } from "hyperapp";
-import * as Sortable from "sortablejs";
+import Sortable from "sortablejs";
+import Cropper from "cropperjs";
 
 const state = {
-  images: []
+  images: [],
+  activeImageIndex: null,
+  activeCropper: null
 };
 
 const actions = {
-  add: value => state => ({ images: [...state.images, value] }),
-  remove: value => state => ({ images: state.images.filter(i => i != value) })
+  add: value => (state, actions) => {
+    const res = { images: [...state.images, value] };
+    res.activeImageIndex = res.images.indexOf(value);
+    return res;
+  },
+  replace: value => state => {
+    const images = state.images;
+    images[value[0]] = value[1];
+    return {
+      images: images
+    };
+  },
+  remove: value => state => ({ images: state.images.filter(i => i != value) }),
+  activeCropper: value => state => ({ activeCropper: value })
 };
 
 const view = (state, actions) => (
@@ -19,7 +34,45 @@ const view = (state, actions) => (
       </button>
     </div>
     <div class="product-create-images" oncreate={el => Sortable.create(el)}>
-      {state.images.map(i => <img src={i} />)}
+      {state.images.map(i => (
+        <div>
+          <img
+            src={i}
+            oncreate={el => {
+              actions.activeCropper(
+                new Cropper(el, {
+                  aspectRatio: 1 / 1,
+                  minContainerHeight: 600,
+                  autoCrop: false,
+                  zoomable: false
+                })
+              );
+            }}
+          />
+          <button
+            class="uk-button uk-button-default"
+            onclick={event => {
+              const data = state.activeCropper
+                .getCroppedCanvas({
+                  minWidth: 100,
+                  minHeight: 100,
+                  maxWidth: 4096,
+                  maxHeight: 4096,
+                  fillColor: "#fff",
+                  imageSmoothingEnabled: false,
+                  imageSmoothingQuality: "high"
+                })
+                .toDataURL("image/jpeg");
+              state.activeCropper.destroy();
+              actions.replace([state.activeImageIndex, data]);
+              event.target.style.display = "none";
+            }}
+            type="button"
+          >
+            Done
+          </button>
+        </div>
+      ))}
     </div>
   </div>
 );

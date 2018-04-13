@@ -81,13 +81,17 @@ body {
   flex: 1;
 }
 
+.cropper-canvas {
+  height: 500px !important;
+}
+
 .options-stock {
   padding: 6px;
 }
 
 .product-create-images img {
-  max-height: 100px;
-  margin: 10px;
+  max-height: 200px;
+  margin: 10px 10px 10px 0;
 }
 
 * {

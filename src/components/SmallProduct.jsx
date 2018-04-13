@@ -6,7 +6,9 @@ export const SmallProduct = ({ click }, Children) => (
     style={{
       cursor: "pointer",
       margin: "20px",
-      marginTop: "20px"
+      marginTop: "20px",
+      maxHeight: "300px",
+      maxWidth: "300px"
     }}
     onclick={click}
   >

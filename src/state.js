@@ -1,6 +1,6 @@
 import { location } from "@hyperapp/router";
 
 export const state = {
-  products: [{ name: "No products" }],
+  products: [],
   location: location.state
 };
