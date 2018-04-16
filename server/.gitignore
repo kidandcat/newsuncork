@@ -2,6 +2,8 @@
 logs
 *.log
 
+cockroach-data
+
 # Runtime data
 pids
 *.pid
