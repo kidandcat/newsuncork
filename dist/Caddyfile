@@ -1,6 +1,0 @@
-suncork.net {
-  gzip
-  rewrite {
-    to {path} {path}/ /
-  }
-}

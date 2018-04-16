@@ -1,0 +1,15 @@
+suncork.net 
+
+gzip
+root dist
+
+tls kidandcat@gmail.com
+
+proxy /socket.io/ localhost:3030 {
+    websocket
+}
+
+rewrite / {
+  if {path} not_has socket.io
+  to {path} {path}/ /
+}

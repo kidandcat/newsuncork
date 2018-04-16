@@ -2,7 +2,7 @@ import feathers from "@feathersjs/feathers";
 import socketio from "@feathersjs/socketio-client";
 import io from "socket.io-client";
 
-const socket = io(`http://suncork.net:80`);
+const socket = io();
 const server = feathers();
 server.configure(socketio(socket));
 
