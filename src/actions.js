@@ -1,4 +1,5 @@
 import { location } from "@hyperapp/router";
+import { getProductByID } from "/src/utils";
 
 export const setupActions = server => ({
   location: location.actions,
@@ -16,5 +17,11 @@ export const setupActions = server => ({
       .service("product")
       .find()
       .then(prods => actions.addProducts(prods));
+  },
+  setActiveProduct: id => (state, actions) => {
+    const prod = getProductByID(state.products, id);
+    return {
+      activeProduct: getProductByID(state.products, id)
+    };
   }
 });

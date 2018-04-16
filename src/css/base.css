@@ -76,6 +76,18 @@ body {
   cursor: pointer;
 }
 
+.main-image {
+  max-height: 50vw;
+}
+
+.image-array {
+  margin-top: 20px;
+}
+
+.image-array img {
+  max-height: 10vw;
+}
+
 .options-label {
   padding: 6px;
   flex: 1;

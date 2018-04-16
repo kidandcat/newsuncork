@@ -7,18 +7,25 @@ export const CreateProduct = () => (state, actions) => (
       <fieldset class="uk-fieldset">
         <div class="uk-margin">
           <input
-            class="uk-input"
+            class="uk-input uk-width-1-6 uk-margin-right"
+            oninput={gatherData("id")}
+            type="text"
+            placeholder="ID"
+          />
+          <input
+            class="uk-input uk-width-3-4 uk-margin-left"
             oninput={gatherData("name")}
             type="text"
             placeholder="Name"
           />
         </div>
         <div class="uk-margin">
-          <input
-            class="uk-input"
+          <label htmlFor="description">Description</label>
+          <textarea
+            rows="10"
+            class="uk-textarea"
+            name="description"
             oninput={gatherData("description")}
-            type="text"
-            placeholder="Description"
           />
         </div>
       </fieldset>

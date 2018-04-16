@@ -15,7 +15,13 @@ export const SideMenu = () => (state, actions) => (
       <br />
       <ul class="uk-nav-default" uk-nav>
         <li class="uk-active">
-          <a href="/">Home</a>
+          <Link
+            to="/"
+            // Click body to hide the menu
+            onclick={() => document.body.click()}
+          >
+            Home
+          </Link>
         </li>
         <li class="uk-parent uk-preserve-color">
           <a>
@@ -23,10 +29,14 @@ export const SideMenu = () => (state, actions) => (
           </a>
           <ul class="uk-nav-sub">
             <li>
-              <a href="/admin/product/create">
+              <Link
+                to="/admin/product/create"
+                // Click body to hide the menu
+                onclick={() => document.body.click()}
+              >
                 <span class="uk-margin-small-right" uk-icon="plus" />Create
                 Product
-              </a>
+              </Link>
             </li>
           </ul>
         </li>

@@ -1,4 +1,6 @@
-gzip
-rewrite {
-  to {path} {path}/ /
+suncork.net {
+  gzip
+  rewrite {
+    to {path} {path}/ /
+  }
 }

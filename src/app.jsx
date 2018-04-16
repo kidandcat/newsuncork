@@ -9,5 +9,10 @@ import "./css/base.css";
 
 const actions = setupActions(server);
 const main = app(state, actions, Root, document.body);
+load(main);
 setupListeners(server, main);
 const unsubscribe = location.subscribe(main.location);
+
+function load(actions) {
+  actions.getProducts();
+}

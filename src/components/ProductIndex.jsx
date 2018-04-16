@@ -7,12 +7,11 @@ export const ProductIndex = () => (state, actions) => (
     <div>
       <div uk-grid class="uk-grid-medium uk-grid-match uk-flex-center">
         {state.products.map(p => (
-          <SmallProduct click={() => actions.location.go("/product")}>
+          <SmallProduct click={() => actions.location.go(`/product/${p.id}`)}>
             <img src={p.images[0]} alt={p.name} />
           </SmallProduct>
         ))}
       </div>
-      {actions.getProducts()}
     </div>
   </div>
 );

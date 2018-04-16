@@ -18,7 +18,7 @@ export const Root = (state, actions) => (
       >
         <Switch>
           <Route path="/" render={ProductIndex} />
-          <Route path="/product" render={ProductInfo} />
+          <Route path="/product/:productID" render={ProductInfo} />
           <Route path="/admin/product/create" render={CreateProduct} />
         </Switch>
       </div>
