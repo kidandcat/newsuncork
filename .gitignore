@@ -2,3 +2,4 @@
 node_modules
 yarn.lock
 server/node_modules
+server/cockroach-data
