@@ -4,10 +4,3 @@ suncork.net {
     to {path} {path}/ /
   }
 }
-
-git https://github.com/kidandcat/newsuncork {
-	repo        https://github.com/kidandcat/newsuncork
-	key         /root/.ssh/id_rsa
-	interval    -1
-	hook        /github/webhook githubwebhookpassword
-}
