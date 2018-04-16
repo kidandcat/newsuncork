@@ -16921,7 +16921,7 @@ var _socket2 = _interopRequireDefault(_socket);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var socket = (0, _socket2.default)(window.location.hostname + ":3030");
+var socket = (0, _socket2.default)(window.location.hostname + ":80");
 var server = (0, _feathers2.default)();
 server.configure((0, _socketioClient2.default)(socket));
 
