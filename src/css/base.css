@@ -65,27 +65,17 @@ body {
   flex-wrap: wrap;
 }
 
-.big-product-image {
-  max-width: 300px;
-}
-
-.small-product-image {
-  flex: 1;
-  padding: 15px;
-  max-width: 150px;
-  cursor: pointer;
-}
-
-.main-image {
-  max-height: 50vw;
-}
-
 .image-array {
   margin-top: 20px;
 }
 
+.product-info {
+  width: 40vw;
+}
+
 .image-array img {
   max-height: 10vw;
+  cursor: pointer;
 }
 
 .options-label {
@@ -189,31 +179,4 @@ body {
   display: inline-block;
   color: black;
   text-transform: none;
-}
-
-.uk-badge {
-  box-sizing: content-box;
-  min-width: 13px;
-  height: 13px;
-  padding: 4px;
-  margin-left: 4px;
-  border-radius: 500px;
-  vertical-align: middle;
-  background: black;
-  color: #fff;
-  font-size: 0.6rem;
-  animation-duration: 2s;
-  animation-name: beat;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: linear;
-}
-
-@keyframes beat {
-  from {
-    transform: scale(0.7);
-  }
-  to {
-    transform: scale(1.1);
-  }
 }

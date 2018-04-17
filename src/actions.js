@@ -23,5 +23,8 @@ export const setupActions = server => ({
     return {
       activeProduct: getProductByID(state.products, id)
     };
-  }
+  },
+  setActiveImage: index => (state, actions) => ({
+    activeImage: index
+  })
 });

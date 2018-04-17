@@ -1,4 +1,5 @@
 import { h } from "hyperapp";
+import Anime from "animejs";
 
 export const ProductInfo = ({ match }) => (state, actions) => {
   if (
@@ -9,13 +10,34 @@ export const ProductInfo = ({ match }) => (state, actions) => {
       <div class="uk-flex">
         <div class="image-viewer">
           <img
-            class="uk-width-3-4"
-            src={state.activeProduct.images[0]}
+            id="activeImage"
+            class="uk-width-3-5"
+            src={state.activeProduct.images[state.activeImage]}
             alt="big product image"
           />
           <div class="image-array">
-            {state.activeProduct.images.map(i => (
-              <img src={i} alt="small product image" />
+            {state.activeProduct.images.map((i, index) => (
+              <img
+                src={i}
+                onclick={() => {
+                  Anime({
+                    targets: "#activeImage",
+                    opacity: [1, 0],
+                    duration: 250,
+                    easing: "linear",
+                    complete: () => {
+                      actions.setActiveImage(index);
+                      Anime({
+                        targets: "#activeImage",
+                        opacity: [0, 1],
+                        duration: 250,
+                        easing: "linear"
+                      });
+                    }
+                  });
+                }}
+                alt="small product image"
+              />
             ))}
           </div>
         </div>
