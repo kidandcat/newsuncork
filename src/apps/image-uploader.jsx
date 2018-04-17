@@ -28,7 +28,7 @@ const actions = {
 const view = (state, actions) => (
   <div class="uk-margin">
     <div uk-form-custom>
-      <input onchange={processFile(actions.add)} type="file" />
+      <input onchange={processFile(state, actions)} type="file" />
       <button class="uk-button uk-button-default" type="button" tabindex="-1">
         Add Image
       </button>
@@ -63,8 +63,10 @@ const view = (state, actions) => (
                   imageSmoothingQuality: "high"
                 })
                 .toDataURL("image/jpeg");
-              state.activeCropper.destroy();
+
               actions.replace([state.activeImageIndex, data]);
+              state.activeCropper.destroy();
+              actions.activeCropper(null);
               event.target.style.display = "none";
             }}
             type="button"
@@ -77,15 +79,18 @@ const view = (state, actions) => (
   </div>
 );
 
-const processFile = add => event => {
+const processFile = (state, actions) => event => {
+  console.log("state.activeCropper", state.activeCropper);
+  if (state.activeCropper) {
+    const img = state.activeCropper.element;
+    state.activeCropper.destroy();
+    actions.remove(img.src);
+  }
   const file = event.target.files[0];
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = () => {
-    if (state.activeCropper) {
-      state.activeCropper.destroy();
-    }
-    add(reader.result);
+    actions.add(reader.result);
   };
   reader.onerror = error => {
     console.log("Error: ", error);
