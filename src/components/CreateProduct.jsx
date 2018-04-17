@@ -32,7 +32,10 @@ export const CreateProduct = () => (state, actions) => (
       <div
         oncreate={elem => (ImageUploaderInstance = ImageUploaderApp(elem))}
       />
-      <button onclick={() => gatherImages() && actions.createProduct(product)}>
+      <button
+        class="uk-button uk-button-default"
+        onclick={() => gatherImages() && actions.createProduct(product)}
+      >
         Create
       </button>
     </form>

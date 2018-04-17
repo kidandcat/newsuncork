@@ -82,6 +82,9 @@ const processFile = add => event => {
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = () => {
+    if (state.activeCropper) {
+      state.activeCropper.destroy();
+    }
     add(reader.result);
   };
   reader.onerror = error => {
