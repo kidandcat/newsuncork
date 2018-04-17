@@ -8,13 +8,7 @@ export const ProductInfo = ({ match }) => (state, actions) => {
   ) {
     return (
       <div class="uk-flex">
-        <div class="image-viewer">
-          <img
-            id="activeImage"
-            class="uk-width-3-5"
-            src={state.activeProduct.images[state.activeImage]}
-            alt="big product image"
-          />
+        <div class="image-viewer uk-width-3-4">
           <div class="image-array">
             {state.activeProduct.images.map((i, index) => (
               <img
@@ -39,6 +33,14 @@ export const ProductInfo = ({ match }) => (state, actions) => {
                 alt="small product image"
               />
             ))}
+          </div>
+          <div class="uk-margin-auto">
+            <img
+              id="activeImage"
+              class="uk-margin-auto"
+              src={state.activeProduct.images[state.activeImage]}
+              alt="big product image"
+            />
           </div>
         </div>
         <div class="product-info">

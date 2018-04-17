@@ -890,13 +890,7 @@ var ProductInfo = exports.ProductInfo = function ProductInfo(_ref) {
         { "class": "uk-flex" },
         (0, _hyperapp.h)(
           "div",
-          { "class": "image-viewer" },
-          (0, _hyperapp.h)("img", {
-            id: "activeImage",
-            "class": "uk-width-3-5",
-            src: state.activeProduct.images[state.activeImage],
-            alt: "big product image"
-          }),
+          { "class": "image-viewer uk-width-3-4" },
           (0, _hyperapp.h)(
             "div",
             { "class": "image-array" },
@@ -922,6 +916,16 @@ var ProductInfo = exports.ProductInfo = function ProductInfo(_ref) {
                 },
                 alt: "small product image"
               });
+            })
+          ),
+          (0, _hyperapp.h)(
+            "div",
+            { "class": "uk-margin-auto" },
+            (0, _hyperapp.h)("img", {
+              id: "activeImage",
+              "class": "uk-margin-auto",
+              src: state.activeProduct.images[state.activeImage],
+              alt: "big product image"
             })
           )
         ),
@@ -17095,7 +17099,7 @@ var unsubscribe = _router.location.subscribe(main.location);
 function load(actions) {
   actions.getProducts();
 }
-},{"hyperapp":10,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":9,"/src/state":7,"/src/server":8,"./css/base.css":3}],108:[function(require,module,exports) {
+},{"hyperapp":10,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":9,"/src/state":7,"/src/server":8,"./css/base.css":3}],110:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -17264,5 +17268,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[108,2])
+},{}]},{},[110,2])
 //# sourceMappingURL=/app.a4a160cd.map

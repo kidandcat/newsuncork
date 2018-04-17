@@ -67,6 +67,18 @@ body {
 
 .image-array {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 15vw;
+  justify-content: flex-start;
+}
+
+#activeImage {
+  width: 30vw;
+}
+
+.image-viewer {
+  display: flex;
 }
 
 .product-info {
@@ -74,8 +86,9 @@ body {
 }
 
 .image-array img {
-  max-height: 10vw;
+  max-height: 5vw;
   cursor: pointer;
+  margin: 5px;
 }
 
 .options-label {
