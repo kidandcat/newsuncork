@@ -4,5 +4,6 @@ export const state = {
   products: [],
   activeProduct: null,
   activeImage: 0,
-  location: location.state
+  location: location.state,
+  logged: false
 };

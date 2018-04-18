@@ -23,23 +23,30 @@ export const SideMenu = () => (state, actions) => (
             Home
           </Link>
         </li>
-        <li class="uk-parent uk-preserve-color">
-          <a>
-            Admin<span class="uk-float-right" uk-icon="chevron-down" />
-          </a>
-          <ul class="uk-nav-sub">
-            <li>
-              <Link
-                to="/admin/product/create"
-                // Click body to hide the menu
-                onclick={() => document.body.click()}
-              >
-                <span class="uk-margin-small-right" uk-icon="plus" />Create
-                Product
-              </Link>
-            </li>
-          </ul>
-        </li>
+        {!state.logged && (
+          <li class="uk-active">
+            <a uk-toggle="target: #login">Login</a>
+          </li>
+        )}
+        {state.logged && (
+          <li class="uk-parent uk-preserve-color">
+            <a>
+              Admin<span class="uk-float-right" uk-icon="chevron-down" />
+            </a>
+            <ul class="uk-nav-sub">
+              <li>
+                <Link
+                  to="/admin/product/create"
+                  // Click body to hide the menu
+                  onclick={() => document.body.click()}
+                >
+                  <span class="uk-margin-small-right" uk-icon="plus" />Create
+                  Product
+                </Link>
+              </li>
+            </ul>
+          </li>
+        )}
       </ul>
     </div>
   </div>

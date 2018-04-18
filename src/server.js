@@ -1,5 +1,6 @@
 import feathers from "@feathersjs/feathers";
 import socketio from "@feathersjs/socketio-client";
+import auth from "@feathersjs/authentication-client";
 import io from "socket.io-client";
 
 let socket;
@@ -10,5 +11,6 @@ if (window.location.hostname === "localhost") {
 }
 const server = feathers();
 server.configure(socketio(socket));
+server.configure(auth());
 
 export default server;

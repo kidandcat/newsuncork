@@ -5,6 +5,7 @@ import { ProductInfo } from "/src/components/ProductInfo";
 import { ProductIndex } from "/src/components/ProductIndex";
 import { CreateProduct } from "/src/components/CreateProduct";
 import { SideMenu } from "/src/components/SideMenu";
+import { AuthModal } from "/src/components/AuthModal";
 import { Route, Switch } from "@hyperapp/router";
 
 // View
@@ -24,6 +25,7 @@ export const Root = (state, actions) => (
       </div>
       <Footer />
       <SideMenu />
+      <AuthModal />
     </div>
   </div>
 );

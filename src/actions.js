@@ -26,5 +26,24 @@ export const setupActions = server => ({
   },
   setActiveImage: index => (state, actions) => ({
     activeImage: index
-  })
+  }),
+  logged: val => (state, actions) => ({
+    logged: val
+  }),
+  authenticate: ({ user, pass }) => (state, actions) => {
+    server
+      .authenticate({
+        strategy: "local",
+        email: user,
+        password: pass
+      })
+      .then(res => {
+        console.log("authenticated", res);
+        actions.logged(true);
+      })
+      .catch(res => {
+        console.log("authentication error", res);
+        actions.logged(false);
+      });
+  }
 });
