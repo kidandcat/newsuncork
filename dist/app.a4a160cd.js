@@ -6520,8 +6520,14 @@ var SideMenu = exports.SideMenu = function SideMenu() {
             "li",
             { "class": "uk-active" },
             (0, _hyperapp.h)(
-              "a",
-              { "uk-toggle": "target: #login" },
+              _router.Link,
+              {
+                to: "/login"
+                // Click body to hide the menu
+                , onclick: function onclick() {
+                  return document.body.click();
+                }
+              },
               "Login"
             )
           ),
@@ -6578,30 +6584,27 @@ var AuthModal = exports.AuthModal = function AuthModal() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
-      { id: "login", "uk-modal": true },
+      { "class": "uk-width-1-2 uk-margin-auto" },
       (0, _hyperapp.h)(
-        "div",
-        { "class": "uk-modal-dialog uk-modal-body" },
-        (0, _hyperapp.h)(
-          "h2",
-          { "class": "uk-modal-title" },
-          "Login"
-        ),
-        (0, _hyperapp.h)("input", { "class": "uk-input", type: "text", id: "user" }),
-        (0, _hyperapp.h)("input", { "class": "uk-input", type: "password", id: "pass" }),
-        (0, _hyperapp.h)(
-          "button",
-          {
-            "class": "uk-button uk-modal-close",
-            onclick: function onclick() {
-              actions.authenticate({
-                user: document.querySelector("#user").value,
-                pass: document.querySelector("#pass").value
-              });
-            }
-          },
-          "Log in"
-        )
+        "h2",
+        null,
+        "Login"
+      ),
+      (0, _hyperapp.h)("input", { "class": "uk-input", type: "text", id: "user" }),
+      (0, _hyperapp.h)("input", { "class": "uk-input", type: "password", id: "pass" }),
+      (0, _hyperapp.h)(
+        "button",
+        {
+          "class": "uk-button",
+          onclick: function onclick() {
+            actions.authenticate({
+              user: document.querySelector("#user").value,
+              pass: document.querySelector("#pass").value
+            });
+            actions.location.go("/");
+          }
+        },
+        "Log in"
       )
     );
   };
@@ -6652,12 +6655,12 @@ var Root = exports.Root = function Root(state, actions) {
           null,
           (0, _hyperapp.h)(_router.Route, { path: "/", render: _ProductIndex.ProductIndex }),
           (0, _hyperapp.h)(_router.Route, { path: "/product/:productID", render: _ProductInfo.ProductInfo }),
-          (0, _hyperapp.h)(_router.Route, { path: "/admin/product/create", render: _CreateProduct.CreateProduct })
+          (0, _hyperapp.h)(_router.Route, { path: "/admin/product/create", render: _CreateProduct.CreateProduct }),
+          (0, _hyperapp.h)(_router.Route, { path: "/login", render: _AuthModal.AuthModal })
         )
       ),
       (0, _hyperapp.h)(_Footer.Footer, null),
-      (0, _hyperapp.h)(_SideMenu.SideMenu, null),
-      (0, _hyperapp.h)(_AuthModal.AuthModal, null)
+      (0, _hyperapp.h)(_SideMenu.SideMenu, null)
     )
   );
 };
@@ -15838,7 +15841,7 @@ var unsubscribe = _router.location.subscribe(main.location);
 function load(actions) {
   actions.getProducts();
 }
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":8,"/src/server":7,"./css/base.css":3}],106:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":8,"/src/server":7,"./css/base.css":3}],111:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -16007,5 +16010,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[106,2])
+},{}]},{},[111,2])
 //# sourceMappingURL=/app.a4a160cd.map

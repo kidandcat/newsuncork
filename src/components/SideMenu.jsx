@@ -25,7 +25,13 @@ export const SideMenu = () => (state, actions) => (
         </li>
         {!state.logged && (
           <li class="uk-active">
-            <a uk-toggle="target: #login">Login</a>
+            <Link
+              to="/login"
+              // Click body to hide the menu
+              onclick={() => document.body.click()}
+            >
+              Login
+            </Link>
           </li>
         )}
         {state.logged && (

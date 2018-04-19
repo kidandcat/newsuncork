@@ -21,11 +21,11 @@ export const Root = (state, actions) => (
           <Route path="/" render={ProductIndex} />
           <Route path="/product/:productID" render={ProductInfo} />
           <Route path="/admin/product/create" render={CreateProduct} />
+          <Route path="/login" render={AuthModal} />
         </Switch>
       </div>
       <Footer />
       <SideMenu />
-      <AuthModal />
     </div>
   </div>
 );
