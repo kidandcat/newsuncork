@@ -30,7 +30,12 @@ export const CreateProduct = () => (state, actions) => (
         </div>
       </fieldset>
       <div
-        oncreate={elem => (ImageUploaderInstance = ImageUploaderApp(elem))}
+        oncreate={elem =>
+          setTimeout(
+            () => (ImageUploaderInstance = ImageUploaderApp(elem)),
+            2000
+          )
+        }
       />
       <button
         class="uk-button uk-button-default"
