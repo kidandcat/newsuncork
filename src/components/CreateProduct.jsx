@@ -3,7 +3,7 @@ import { ImageUploaderApp } from "/src/apps/image-uploader";
 
 export const CreateProduct = () => (state, actions) => (
   <div>
-    <form class="uk-form-width-large">
+    <div class="uk-form-width-large">
       <fieldset class="uk-fieldset">
         <div class="uk-margin">
           <input
@@ -38,7 +38,7 @@ export const CreateProduct = () => (state, actions) => (
       >
         Create
       </button>
-    </form>
+    </div>
   </div>
 );
 

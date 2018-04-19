@@ -6371,7 +6371,7 @@ var CreateProduct = exports.CreateProduct = function CreateProduct() {
       "div",
       null,
       (0, _hyperapp.h)(
-        "form",
+        "div",
         { "class": "uk-form-width-large" },
         (0, _hyperapp.h)(
           "fieldset",
@@ -15853,7 +15853,7 @@ function load(actions) {
   actions.getProducts();
   actions.checkAuthentication();
 }
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],109:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.css":3}],110:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -16022,5 +16022,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[109,2])
+},{}]},{},[110,2])
 //# sourceMappingURL=/app.a4a160cd.map
