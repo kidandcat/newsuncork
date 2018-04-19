@@ -12,6 +12,7 @@ export const ProductIndex = () => (state, actions) => (
             remove={() => {
               actions.deleteProduct(p);
             }}
+            logged={state.logged}
           >
             <img src={p.images[0]} alt={p.name} />
           </SmallProduct>

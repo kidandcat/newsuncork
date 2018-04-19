@@ -1,6 +1,6 @@
 import { h } from "hyperapp";
 
-export const SmallProduct = ({ click, remove }, Children) => (
+export const SmallProduct = ({ click, remove, logged }, Children) => (
   <div
     class="uk-card uk-card-default uk-card-hover uk-card-body"
     style={{
@@ -13,14 +13,16 @@ export const SmallProduct = ({ click, remove }, Children) => (
     onclick={click}
   >
     {Children}
-    <span
-      uk-icon="icon: trash"
-      class="delete-button"
-      onclick={event => {
-        event.stopPropagation();
-        event.preventDefault();
-        remove();
-      }}
-    />
+    {logged && (
+      <span
+        uk-icon="icon: trash"
+        class="delete-button"
+        onclick={event => {
+          event.stopPropagation();
+          event.preventDefault();
+          remove();
+        }}
+      />
+    )}
   </div>
 );
