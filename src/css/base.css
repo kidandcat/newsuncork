@@ -71,6 +71,7 @@ body {
   flex-wrap: wrap;
   max-width: 15vw;
   justify-content: flex-start;
+  align-content: flex-start;
 }
 
 #activeImage {
