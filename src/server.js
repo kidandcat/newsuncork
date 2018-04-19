@@ -11,6 +11,10 @@ if (window.location.hostname === "localhost") {
 }
 const server = feathers();
 server.configure(socketio(socket));
-server.configure(auth());
+server.configure(
+  auth({
+    storage: window.localStorage
+  })
+);
 
 export default server;

@@ -30,6 +30,12 @@ export const setupActions = server => ({
   logged: val => (state, actions) => ({
     logged: val
   }),
+  checkAuthentication: () => (state, actions) => {
+    server
+      .authenticate()
+      .then(() => actions.logged(true))
+      .catch(err => actions.logged(false));
+  },
   authenticate: ({ user, pass }) => (state, actions) => {
     server
       .authenticate({

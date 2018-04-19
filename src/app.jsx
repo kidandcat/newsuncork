@@ -15,4 +15,5 @@ const unsubscribe = location.subscribe(main.location);
 
 function load(actions) {
   actions.getProducts();
+  actions.checkAuthentication();
 }
