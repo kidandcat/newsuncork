@@ -6,8 +6,8 @@ export const AuthModal = () => (state, actions) => (
   <div id="login" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
       <h2 class="uk-modal-title">Login</h2>
-      <input type="text" id="user" />
-      <input type="password" id="pass" />
+      <input class="uk-input" type="text" id="user" />
+      <input class="uk-input" type="password" id="pass" />
       <button
         class="uk-button uk-modal-close"
         onclick={() => {
