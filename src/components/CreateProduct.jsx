@@ -34,7 +34,11 @@ export const CreateProduct = () => (state, actions) => (
       />
       <button
         class="uk-button uk-button-default"
-        onclick={() => gatherImages() && actions.createProduct(product)}
+        onclick={() => {
+          gatherImages();
+          actions.createProduct(product);
+          actions.location.go(`/`);
+        }}
       >
         Create
       </button>

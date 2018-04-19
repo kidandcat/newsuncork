@@ -1,5 +1,5 @@
 export const setupListeners = (server, actions) => {
-  server.service("product").on("created", product => {
+  server.service("product").on("create", product => {
     actions.productCreated(product);
   });
 };
