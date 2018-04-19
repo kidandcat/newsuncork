@@ -12,6 +12,7 @@ export const Loading = () => (state, actions) => (
       <div class="spinner">
         <div />
       </div>
+      <div class="spinner-text">Loading</div>
     </div>
   </div>
 );

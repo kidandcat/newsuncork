@@ -86,6 +86,9 @@ body {
   margin-left: 50vw;
   transform: translate(-50%, -50%);
 }
+.spinner-text {
+  color: white;
+}
 .uk-offcanvas-bar {
   background-color: white;
   line-height: 1rem;
