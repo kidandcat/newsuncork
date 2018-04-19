@@ -14,7 +14,8 @@
     "hyperapp": "1.2.5",
     "parcel-bundler": "^1.6.2",
     "socket.io-client": "^2.1.0",
-    "sortablejs": "^1.7.0"
+    "sortablejs": "^1.7.0",
+    "sweetalert": "^2.1.0"
   },
   "scripts": {
     "start": "parcel index.html",

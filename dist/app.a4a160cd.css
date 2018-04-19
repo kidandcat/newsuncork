@@ -7,6 +7,10 @@ body {
   overflow-y: scroll;
 }
 
+.swal-overlay {
+  background-color: rgba(43, 165, 137, 0.45);
+}
+
 .uk-offcanvas-bar {
   background-color: white;
   line-height: 1rem;

@@ -1,18 +1,46 @@
 import { location } from "@hyperapp/router";
 import { getProductByID } from "/src/utils";
+import swal from "sweetalert";
 
 export const setupActions = server => ({
   location: location.actions,
   createProduct: v => state => {
-    server.service("product").create(v);
+    server
+      .service("product")
+      .create(v)
+      .then(() => {
+        swal({
+          title: "Product created",
+          text: "Your new product was successfully created!",
+          icon: "success"
+        });
+      })
+      .catch(err => {
+        swal({
+          title: "Error creating product",
+          text: err.message,
+          icon: "error"
+        });
+      });
   },
   deleteProduct: v => (state, actions) => {
     server
       .service("product")
       .remove(v.id)
-      .then(actions.getProducts)
+      .then(() => {
+        swal({
+          title: "Product removed successfully",
+          text: "Your product was removed successfully",
+          icon: "success"
+        });
+        actions.getProducts();
+      })
       .catch(err => {
-        console.log("Error removing product", err);
+        swal({
+          title: "Error removing product",
+          text: err.message,
+          icon: "error"
+        });
       });
   },
   productCreated: v => state => ({
@@ -25,7 +53,14 @@ export const setupActions = server => ({
     server
       .service("product")
       .find()
-      .then(prods => actions.addProducts(prods));
+      .then(prods => actions.addProducts(prods))
+      .catch(err => {
+        swal({
+          title: "Error fetching products",
+          text: err.message,
+          icon: "error"
+        });
+      });
   },
   setActiveProduct: id => (state, actions) => {
     const prod = getProductByID(state.products, id);
@@ -53,11 +88,19 @@ export const setupActions = server => ({
         password: pass
       })
       .then(res => {
-        console.log("authenticated", res);
+        swal({
+          title: "Logged In",
+          text: "You logged in sucessfully, check the side menu",
+          icon: "success"
+        });
         actions.logged(true);
       })
       .catch(res => {
-        console.log("authentication error", res);
+        swal({
+          title: "Logged In",
+          text: res.message,
+          icon: "warning"
+        });
         actions.logged(false);
       });
   }
