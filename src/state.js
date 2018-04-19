@@ -5,5 +5,6 @@ export const state = {
   activeProduct: null,
   activeImage: 0,
   location: location.state,
-  logged: false
+  logged: false,
+  loading: true
 };

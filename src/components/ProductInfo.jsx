@@ -7,8 +7,8 @@ export const ProductInfo = ({ match }) => (state, actions) => {
     state.activeProduct.id === match.params.productID
   ) {
     return (
-      <div class="uk-flex">
-        <div class="image-viewer uk-width-3-4">
+      <div class="uk-flex product-info-container">
+        <div class="image-viewer uk-margin-auto uk-width-3-4@m">
           <div class="image-array">
             {state.activeProduct.images.map((i, index) => (
               <img

@@ -49,17 +49,25 @@ export const setupActions = server => ({
   addProducts: v => state => ({
     products: v
   }),
+  loading: v => state => ({
+    loading: v
+  }),
   getProducts: () => (state, actions) => {
+    actions.loading(true);
     server
       .service("product")
       .find()
-      .then(prods => actions.addProducts(prods))
+      .then(prods => {
+        actions.addProducts(prods);
+        actions.loading(false);
+      })
       .catch(err => {
         swal({
           title: "Error fetching products",
           text: err.message,
           icon: "error"
         });
+        actions.loading(false);
       });
   },
   setActiveProduct: id => (state, actions) => {
