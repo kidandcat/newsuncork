@@ -9,11 +9,11 @@ import "./css/base.css";
 
 const actions = setupActions(server);
 const main = app(state, actions, Root, document.body);
-load(main);
-setupListeners(server, main);
 const unsubscribe = location.subscribe(main.location);
+load(main);
 
 function load(actions) {
+  setupListeners(server, main);
   actions.getProducts();
   actions.checkAuthentication();
 }

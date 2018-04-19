@@ -33,7 +33,7 @@ export const CreateProduct = () => (state, actions) => (
         oncreate={elem =>
           setTimeout(
             () => (ImageUploaderInstance = ImageUploaderApp(elem)),
-            2000
+            1500
           )
         }
       />
