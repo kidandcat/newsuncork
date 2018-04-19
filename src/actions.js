@@ -6,6 +6,15 @@ export const setupActions = server => ({
   createProduct: v => state => {
     server.service("product").create(v);
   },
+  deleteProduct: v => (state, actions) => {
+    server
+      .service("product")
+      .remove(v.id)
+      .then(actions.getProducts)
+      .catch(err => {
+        console.log("Error removing product", err);
+      });
+  },
   productCreated: v => state => ({
     products: [...state.products, v]
   }),
