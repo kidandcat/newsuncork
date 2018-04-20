@@ -12,7 +12,7 @@ export const ProductInfo = ({ match }) => (state, actions) => {
           <div class="image-array">
             {state.activeProduct.images.map((i, index) => (
               <img
-                src={state.images[i]}
+                src={state.images[i] || state.defaultImage}
                 onclick={() => {
                   Anime({
                     targets: "#activeImage",
@@ -38,7 +38,10 @@ export const ProductInfo = ({ match }) => (state, actions) => {
             <img
               id="activeImage"
               class="uk-margin-auto"
-              src={state.images[state.activeProduct.images[state.activeImage]]}
+              src={
+                state.images[state.activeProduct.images[state.activeImage]] ||
+                state.defaultImage
+              }
               alt="big product image"
             />
           </div>
