@@ -46,12 +46,30 @@ export const setupActions = server => ({
   productCreated: v => state => ({
     products: [...state.products, v]
   }),
-  addProducts: v => state => ({
-    products: v
-  }),
-  loading: v => state => ({
-    loading: v
-  }),
+  addImage: ({ index, data }) => state => {
+    const a = state.images;
+    a[index] = data;
+    return {
+      images: a
+    };
+  },
+  fetchImages: () => (state, actions) => {
+    for (let product in state.products) {
+      for (let image in state.products[product].images) {
+        server
+          .service("images")
+          .get(state.products[product].images[image])
+          .then(data => {
+            actions.addImage({
+              index: state.products[product].images[image],
+              data: data.data
+            });
+          });
+      }
+    }
+  },
+  addProducts: v => state => ({ products: v }),
+  loading: v => state => ({ loading: v }),
   getProducts: () => (state, actions) => {
     actions.loading(true);
     server
@@ -60,6 +78,7 @@ export const setupActions = server => ({
       .then(prods => {
         actions.addProducts(prods);
         actions.loading(false);
+        actions.fetchImages();
       })
       .catch(err => {
         swal({

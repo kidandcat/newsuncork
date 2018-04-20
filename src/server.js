@@ -10,7 +10,7 @@ if (window.location.hostname === "localhost") {
   socket = io();
 }
 const server = feathers();
-server.configure(socketio(socket, { timeout: 15000 }));
+server.configure(socketio(socket, { timeout: 25000 }));
 server.configure(
   auth({
     storage: window.localStorage

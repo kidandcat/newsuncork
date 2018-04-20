@@ -4,8 +4,7 @@ import Cropper from "cropperjs";
 
 const state = {
   images: [],
-  activeImageIndex: null,
-  activeCropper: null
+  activeImageIndex: null
 };
 
 const actions = {
@@ -21,9 +20,10 @@ const actions = {
       images: images
     };
   },
-  remove: value => state => ({ images: state.images.filter(i => i != value) }),
-  activeCropper: value => state => ({ activeCropper: value })
+  remove: value => state => ({ images: state.images.filter(i => i != value) })
 };
+
+let activeCropper;
 
 const view = (state, actions) => (
   <div class="uk-margin">
@@ -39,20 +39,18 @@ const view = (state, actions) => (
           <img
             src={i}
             oncreate={el => {
-              actions.activeCropper(
-                new Cropper(el, {
-                  aspectRatio: 1 / 1,
-                  minContainerHeight: 600,
-                  autoCrop: false,
-                  zoomable: false
-                })
-              );
+              activeCropper = new Cropper(el, {
+                aspectRatio: 1 / 1,
+                minContainerHeight: 600,
+                autoCrop: false,
+                zoomable: false
+              });
             }}
           />
           <button
             class="uk-button uk-button-default"
             onclick={event => {
-              const data = state.activeCropper
+              const data = activeCropper
                 .getCroppedCanvas({
                   minWidth: 100,
                   minHeight: 100,
@@ -65,8 +63,8 @@ const view = (state, actions) => (
                 .toDataURL("image/jpeg");
 
               actions.replace([state.activeImageIndex, data]);
-              state.activeCropper.destroy();
-              actions.activeCropper(null);
+              activeCropper.destroy();
+              activeCropper = null;
               event.target.style.display = "none";
             }}
             type="button"
@@ -80,10 +78,10 @@ const view = (state, actions) => (
 );
 
 const processFile = (state, actions) => event => {
-  console.log("state.activeCropper", state.activeCropper);
-  if (state.activeCropper) {
-    const img = state.activeCropper.element;
-    state.activeCropper.destroy();
+  console.log("activeCropper", activeCropper);
+  if (activeCropper) {
+    const img = activeCropper.element;
+    activeCropper.destroy();
     actions.remove(img.src);
   }
   const file = event.target.files[0];
