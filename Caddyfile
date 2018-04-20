@@ -11,6 +11,7 @@ proxy /socket.io/ localhost:3030 {
 
 proxy /status http://localhost:8080 {
   transparent
+  without /status
 }
 
 rewrite / {
