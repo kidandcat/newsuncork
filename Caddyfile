@@ -9,9 +9,12 @@ proxy /socket.io/ localhost:3030 {
     websocket
 }
 
-proxy /status localhost:8080
+proxy /status http://localhost:8080 {
+  transparent
+}
 
 rewrite / {
   if {path} not_has socket.io
+  if {path} not_has status
   to {path} {path}/ /
 }
