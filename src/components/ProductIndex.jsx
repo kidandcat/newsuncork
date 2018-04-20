@@ -14,7 +14,14 @@ export const ProductIndex = () => (state, actions) => (
             }}
             logged={state.logged}
           >
-            <img src={state.images[p.images[0]]} alt={p.name} />
+            <img
+              src={
+                state.images[p.images[0]]
+                  ? state.images[p.images[0]]
+                  : state.defaultImage
+              }
+              alt={p.name}
+            />
           </SmallProduct>
         ))}
       </div>
