@@ -9,10 +9,12 @@ proxy /socket.io/ localhost:3030 {
     websocket
 }
 
-
+proxy /api localhost:3030 {
+  without /api
+}
 
 rewrite / {
   if {path} not_has socket.io
-  if {path} not_has status
+  if {path} not_has api
   to {path} {path}/ /
 }
