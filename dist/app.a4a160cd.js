@@ -676,7 +676,15 @@ var Header = exports.Header = function Header() {
   return function (state, actions) {
     return (0, _hyperapp.h)(
       "div",
-      null,
+      {
+        oncreate: function oncreate() {
+          actions.location.go("/");
+          return;
+          window.UIkit.sticky(document.querySelector("#navbar"), {
+            selTarget: "#navbar"
+          });
+        }
+      },
       (0, _hyperapp.h)(
         "nav",
         {
@@ -15984,7 +15992,7 @@ function load(actions) {
   actions.getProducts();
   actions.checkAuthentication();
 }
-},{"hyperapp":10,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":11,"/src/state":7,"/src/server":8,"./css/base.less":3}],105:[function(require,module,exports) {
+},{"hyperapp":10,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":11,"/src/state":7,"/src/server":8,"./css/base.less":3}],112:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -16153,5 +16161,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[105,2])
+},{}]},{},[112,2])
 //# sourceMappingURL=/app.a4a160cd.map

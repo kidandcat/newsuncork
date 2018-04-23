@@ -2,7 +2,15 @@ import { h } from "hyperapp";
 import { Link } from "@hyperapp/router";
 
 export const Header = () => (state, actions) => (
-  <div>
+  <div
+    oncreate={() => {
+      actions.location.go("/");
+      return;
+      window.UIkit.sticky(document.querySelector("#navbar"), {
+        selTarget: "#navbar"
+      });
+    }}
+  >
     <nav
       id="navbar"
       uk-navbar

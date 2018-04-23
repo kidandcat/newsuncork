@@ -127,7 +127,7 @@ body {
 }
 .navbar {
   border-bottom: none;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   width: 100%;
   background-color: white !important;
   z-index: 1000;
@@ -135,7 +135,7 @@ body {
 }
 @media (min-width: 960px) {
   .navbar {
-    padding-bottom: 100px;
+    margin-bottom: 70px;
   }
 }
 .index-image {
@@ -222,6 +222,7 @@ body {
 .logo {
   transition: all 0.3s linear;
   max-height: 170px;
+  margin-top: 30px;
   max-width: 130%;
 }
 .menu-icon {
