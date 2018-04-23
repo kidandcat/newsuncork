@@ -73,7 +73,7 @@ export const setupActions = server => ({
   getProducts: () => (state, actions) => {
     actions.loading(true);
     fetch(
-      window.location.hostname
+      window.location.hostname == "localhost"
         ? "http://localhost:3030/product"
         : "/api/product"
     )
