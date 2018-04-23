@@ -72,11 +72,14 @@ export const setupActions = server => ({
   loading: v => state => ({ loading: v }),
   getProducts: () => (state, actions) => {
     actions.loading(true);
-    server
-      .service("product")
-      .find()
-      .then(prods => {
-        actions.addProducts(prods);
+    fetch(
+      window.location.hostname
+        ? "http://localhost:3030/product"
+        : "/api/product"
+    )
+      .then(resp => resp.json())
+      .then(data => {
+        actions.addProducts(data);
         actions.loading(false);
         actions.fetchImages();
       })
