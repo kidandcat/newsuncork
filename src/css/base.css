@@ -196,6 +196,7 @@ body {
 }
 .product-info {
   width: 40vw;
+  margin-left: 20px;
 }
 .image-array img {
   max-height: 5vw;
