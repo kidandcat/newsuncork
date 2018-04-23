@@ -2,18 +2,11 @@ import { h } from "hyperapp";
 import { Link } from "@hyperapp/router";
 
 export const Header = () => (state, actions) => (
-  <div
-    oncreate={() =>
-      window.UIkit.sticky(document.querySelector("#navbar"), {
-        selTarget: "#navbar",
-        clsActive: "uk-navbar-sticky"
-      })
-    }
-  >
+  <div>
     <nav
       id="navbar"
       uk-navbar
-      class="navbar uk-navbar-container uk-navbar-transparent"
+      class="navbar uk-navbar-container uk-navbar-transparent uk-navbar-sticky"
     >
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">

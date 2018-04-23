@@ -5,7 +5,10 @@ import { SmallProduct } from "/src/components/SmallProduct";
 export const ProductIndex = () => (state, actions) => (
   <div>
     <div>
-      <div uk-grid class="uk-grid-medium uk-grid-match uk-flex-center">
+      <div
+        uk-grid
+        class="uk-grid-medium uk-grid-match uk-flex-center index-container"
+      >
         {state.products.map(p => (
           <SmallProduct
             click={() => actions.location.go(`/product/${p.id}`)}

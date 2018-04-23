@@ -2,14 +2,7 @@ import { h } from "hyperapp";
 
 export const SmallProduct = ({ click, remove, logged }, Children) => (
   <div
-    class="uk-card uk-card-default uk-card-hover uk-card-body"
-    style={{
-      cursor: "pointer",
-      margin: "20px",
-      marginTop: "20px",
-      maxHeight: "300px",
-      maxWidth: "300px"
-    }}
+    class="uk-card uk-card-default uk-card-hover uk-card-body index-image"
     onclick={click}
   >
     {Children}
