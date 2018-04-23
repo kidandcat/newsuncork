@@ -109,6 +109,10 @@ body {
   color: #999 !important;
   font-size: 0.9em !important;
 }
+.active-small {
+  opacity: 0.5;
+  transition: all 0.3s linear;
+}
 .seven {
   font-size: 0.7rem;
   color: black;

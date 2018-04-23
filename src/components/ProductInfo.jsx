@@ -13,6 +13,7 @@ export const ProductInfo = ({ match }) => (state, actions) => {
             {state.activeProduct.images.map((i, index) => (
               <img
                 src={state.images[i] || state.defaultImage}
+                class={index == state.activeImage ? "active-small" : ""}
                 onclick={() => {
                   Anime({
                     targets: "#activeImage",
