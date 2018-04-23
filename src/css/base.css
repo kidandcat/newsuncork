@@ -177,6 +177,9 @@ body {
     max-width: 15vw;
   }
 }
+#activeImage {
+  width: 90vw;
+}
 @media (min-width: 960px) {
   #activeImage {
     width: 30vw;
