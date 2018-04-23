@@ -43,9 +43,12 @@ export const setupActions = server => ({
         });
       });
   },
-  productCreated: v => state => ({
-    products: [...state.products, v]
-  }),
+  productCreated: v => state => {
+    setTimeout(() => actions.fetchImages(), 1000);
+    return {
+      products: [...state.products, v]
+    };
+  },
   addImage: ({ index, data }) => state => {
     const a = state.images;
     a[index] = data;
@@ -72,14 +75,11 @@ export const setupActions = server => ({
   loading: v => state => ({ loading: v }),
   getProducts: () => (state, actions) => {
     actions.loading(true);
-    fetch(
-      window.location.hostname == "localhost"
-        ? "http://localhost:3030/product"
-        : "/api/product"
-    )
-      .then(resp => resp.json())
-      .then(data => {
-        actions.addProducts(data);
+    server
+      .service("product")
+      .find()
+      .then(prods => {
+        actions.addProducts(prods);
         actions.loading(false);
         actions.fetchImages();
       })
