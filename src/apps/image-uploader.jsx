@@ -36,19 +36,11 @@ const view = (state, actions) => (
     <div class="product-create-images" oncreate={el => Sortable.create(el)}>
       {state.images.map(i => (
         <div>
-          <img
-            src={i}
-            oncreate={el => {
-              activeCropper = new Cropper(el, {
-                aspectRatio: 1 / 1,
-                minContainerHeight: 600,
-                autoCrop: false,
-                zoomable: false
-              });
-            }}
-          />
           <button
-            class="uk-button uk-button-default"
+            class="uk-button uk-button-primary"
+            style={{
+              width: "100%"
+            }}
             onclick={event => {
               const data = activeCropper
                 .getCroppedCanvas({
@@ -71,6 +63,17 @@ const view = (state, actions) => (
           >
             Done
           </button>
+          <img
+            src={i}
+            oncreate={el => {
+              activeCropper = new Cropper(el, {
+                aspectRatio: 1 / 1,
+                minContainerHeight: 600,
+                autoCrop: false,
+                zoomable: false
+              });
+            }}
+          />
         </div>
       ))}
     </div>
@@ -95,4 +98,5 @@ const processFile = (state, actions) => event => {
   };
 };
 
-export const ImageUploaderApp = element => app(state, actions, view, element);
+export const ImageUploaderApp = container =>
+  app(state, actions, view, container);

@@ -9,6 +9,5 @@ export const state = {
   activeImage: 0,
   location: location.state,
   logged: false,
-  loading: true,
-  localhost: false
+  loading: true
 };
