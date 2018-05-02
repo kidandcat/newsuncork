@@ -49,7 +49,7 @@ export const ProductInfo = ({ match }) => (state, actions) => {
         </div>
         <div class="product-info">
           <h2>{state.activeProduct.name}</h2>
-          <p>{state.activeProduct.description}</p>
+          <pre>{state.activeProduct.description}</pre>
         </div>
       </div>
     );

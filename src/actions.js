@@ -4,6 +4,25 @@ import swal from "sweetalert";
 
 export const setupActions = server => ({
   location: location.actions,
+  modifyProduct: ({ id, data }) => state => {
+    server
+      .service("product")
+      .patch(id, data)
+      .then(() => {
+        swal({
+          title: "Product modified",
+          text: "Your product was successfully modified!",
+          icon: "success"
+        });
+      })
+      .catch(err => {
+        swal({
+          title: "Error modifying product",
+          text: err.message,
+          icon: "error"
+        });
+      });
+  },
   createProduct: v => state => {
     server
       .service("product")

@@ -73,7 +73,7 @@ const BasicInfo = () => (state, actions) => (
         />
       </div>
     </fieldset>
-    {stepButtons({ path: "/", text: "Cancel" }, { path: steps().images })}
+    {stepButtons({ path: "/admin", text: "Cancel" }, { path: steps().images })}
   </div>
 );
 
@@ -104,7 +104,7 @@ const Options = () => (state, actions) => (
     {stepButtons(
       { path: steps().images },
       {
-        path: "/",
+        path: "/admin",
         func: () => {
           createProductAction(state.product);
         },

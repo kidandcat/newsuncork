@@ -7,7 +7,7 @@ import { CreateProduct } from "/src/components/CreateProduct";
 import { SideMenu } from "/src/components/SideMenu";
 import { AuthModal } from "/src/components/AuthModal";
 import { Loading } from "/src/components/Loading";
-import { CreateProductStepByStep } from "/src/components/CreateProduct";
+import { AdminDashboard } from "/src/components/AdminDashboard";
 import { Route, Switch } from "@hyperapp/router";
 
 // View
@@ -22,11 +22,7 @@ export const Root = (state, actions) => (
         <Switch>
           <Route path="/" render={ProductIndex} />
           <Route path="/product/:productID" render={ProductInfo} />
-          <Route
-            parent
-            path="/admin/product/create"
-            render={CreateProductStepByStep}
-          />
+          <Route parent path="/admin" render={AdminDashboard} />
           <Route path="/login" render={AuthModal} />
         </Switch>
       </div>

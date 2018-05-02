@@ -10,6 +10,10 @@ body {
   overflow-y: scroll;
 }
 
+pre {
+  border: none !important;
+}
+
 .@{alert-overlay} {
   background-color: @modal-background;
 }
@@ -166,6 +170,37 @@ body {
   max-height: 5vw;
   cursor: pointer;
   margin: @small-image-separation;
+}
+
+.admin-dashboard {
+  justify-content: center;
+}
+
+.admin-product-table {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+}
+
+.admin-button {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  padding: 50px;
+  border-radius: 15px;
+  border: 1px solid gray;
+  text-align: center;
+  margin: 20px;
+  transition: box-shadow 0.3s linear;
+  &:hover {
+    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
+    transition: all 0.3s linear;
+  }
+}
+
+.admin-button span {
+  margin-top: 50%;
+  transform: translateY(-50%);
 }
 
 .options-label {
