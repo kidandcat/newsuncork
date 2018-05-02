@@ -6364,10 +6364,12 @@ var _router = require("@hyperapp/router");
 var createProductBasePath = void 0;
 var createProductAction = void 0;
 
-var steps = {
-  basicInfo: "",
-  images: "images",
-  options: "options"
+var steps = function steps() {
+  return {
+    basicInfo: createProductBasePath + "/",
+    images: createProductBasePath + "/images",
+    options: createProductBasePath + "/options"
+  };
 };
 
 var state = {
@@ -6379,7 +6381,7 @@ var actions = {
   location: _router.location.actions,
   createProductNextStep: function createProductNextStep(val) {
     return function (state, actions) {
-      actions.location.go(createProductBasePath + "/" + val);
+      actions.location.go(val);
     };
   }
 };
@@ -6391,24 +6393,9 @@ var view = function view(state, actions) {
     (0, _hyperapp.h)(
       _router.Switch,
       null,
-      (0, _hyperapp.h)(_router.Route, {
-        basepath: createProductBasePath,
-        path: createProductBasePath + "/" + steps.basicInfo,
-        render: BasicInfo,
-        who: "product-creator"
-      }),
-      (0, _hyperapp.h)(_router.Route, {
-        basepath: createProductBasePath,
-        path: createProductBasePath + "/" + steps.images,
-        render: Images,
-        who: "product-creator"
-      }),
-      (0, _hyperapp.h)(_router.Route, {
-        basepath: createProductBasePath,
-        path: createProductBasePath + "/" + steps.options,
-        render: Options,
-        who: "product-creator"
-      })
+      (0, _hyperapp.h)(_router.Route, { path: steps().basicInfo, render: BasicInfo }),
+      (0, _hyperapp.h)(_router.Route, { path: steps().images, render: Images }),
+      (0, _hyperapp.h)(_router.Route, { path: steps().options, render: Options })
     )
   );
 };
@@ -6492,7 +6479,7 @@ var BasicInfo = function BasicInfo() {
           })
         )
       ),
-      stepButtons(null, { path: steps.images })
+      stepButtons({ path: "/", text: "Cancel" }, { path: steps().images })
     );
   };
 };
@@ -6509,12 +6496,12 @@ var Images = function Images() {
         }
       }),
       stepButtons({
-        path: steps.basicInfo,
+        path: steps().basicInfo,
         func: function func() {
           return gatherImages(state.product);
         }
       }, {
-        path: steps.options,
+        path: steps().options,
         func: function func() {
           return gatherImages(state.product);
         }
@@ -6529,11 +6516,12 @@ var Options = function Options() {
       "div",
       null,
       "options",
-      stepButtons({ path: steps.images }, {
+      stepButtons({ path: steps().images }, {
         path: "/",
         func: function func() {
           createProductAction(state.product);
-        }
+        },
+        text: "Create Product"
       })
     );
   };
@@ -6556,7 +6544,7 @@ var stepButtons = function stepButtons(previous, next) {
               actions.createProductNextStep(previous.path);
             }
           },
-          "Previous"
+          previous.text || "Previous"
         ),
         next !== null && (0, _hyperapp.h)(
           "button",
@@ -6567,7 +6555,7 @@ var stepButtons = function stepButtons(previous, next) {
               actions.createProductNextStep(next.path);
             }
           },
-          "Next"
+          next.text || "Next"
         )
       )
     );
@@ -17319,7 +17307,7 @@ function load(actions) {
   actions.getProducts();
   actions.checkAuthentication();
 }
-},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.less":3}],118:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Root":4,"/src/actions":5,"/src/listeners":6,"@hyperapp/router":10,"/src/state":7,"/src/server":8,"./css/base.less":3}],128:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -17488,5 +17476,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[118,2])
+},{}]},{},[128,2])
 //# sourceMappingURL=/app.a4a160cd.map

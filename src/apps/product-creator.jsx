@@ -5,11 +5,11 @@ import { Route, Switch, location } from "@hyperapp/router";
 let createProductBasePath;
 let createProductAction;
 
-const steps = {
-  basicInfo: "",
-  images: "images",
-  options: "options"
-};
+const steps = () => ({
+  basicInfo: `${createProductBasePath}/`,
+  images: `${createProductBasePath}/images`,
+  options: `${createProductBasePath}/options`
+});
 
 const state = {
   location: location.state,
@@ -19,31 +19,16 @@ const state = {
 const actions = {
   location: location.actions,
   createProductNextStep: val => (state, actions) => {
-    actions.location.go(`${createProductBasePath}/${val}`);
+    actions.location.go(val);
   }
 };
 
 const view = (state, actions) => (
   <div key="productCreatorApp">
     <Switch>
-      <Route
-        basepath={createProductBasePath}
-        path={`${createProductBasePath}/${steps.basicInfo}`}
-        render={BasicInfo}
-        who="product-creator"
-      />
-      <Route
-        basepath={createProductBasePath}
-        path={`${createProductBasePath}/${steps.images}`}
-        render={Images}
-        who="product-creator"
-      />
-      <Route
-        basepath={createProductBasePath}
-        path={`${createProductBasePath}/${steps.options}`}
-        render={Options}
-        who="product-creator"
-      />
+      <Route path={steps().basicInfo} render={BasicInfo} />
+      <Route path={steps().images} render={Images} />
+      <Route path={steps().options} render={Options} />
     </Switch>
   </div>
 );
@@ -88,7 +73,7 @@ const BasicInfo = () => (state, actions) => (
         />
       </div>
     </fieldset>
-    {stepButtons(null, { path: steps.images })}
+    {stepButtons({ path: "/", text: "Cancel" }, { path: steps().images })}
   </div>
 );
 
@@ -102,11 +87,11 @@ const Images = () => (state, actions) => (
     />
     {stepButtons(
       {
-        path: steps.basicInfo,
+        path: steps().basicInfo,
         func: () => gatherImages(state.product)
       },
       {
-        path: steps.options,
+        path: steps().options,
         func: () => gatherImages(state.product)
       }
     )}
@@ -117,12 +102,13 @@ const Options = () => (state, actions) => (
   <div>
     options
     {stepButtons(
-      { path: steps.images },
+      { path: steps().images },
       {
         path: "/",
         func: () => {
           createProductAction(state.product);
-        }
+        },
+        text: "Create Product"
       }
     )}
   </div>
@@ -139,7 +125,7 @@ const stepButtons = (previous, next) => (state, actions) => (
             actions.createProductNextStep(previous.path);
           }}
         >
-          Previous
+          {previous.text || "Previous"}
         </button>
       )}
       {next !== null && (
@@ -150,7 +136,7 @@ const stepButtons = (previous, next) => (state, actions) => (
             actions.createProductNextStep(next.path);
           }}
         >
-          Next
+          {next.text || "Next"}
         </button>
       )}
     </div>

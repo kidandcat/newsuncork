@@ -141,8 +141,8 @@ body {
 .index-image {
   cursor: pointer;
   margin-top: 20px;
-  max-height: 300px;
-  max-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 @media (min-width: 960px) {
   .index-image {
