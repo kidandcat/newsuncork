@@ -2,7 +2,8 @@ import { h, app } from "hyperapp";
 import { ImageUploaderApp } from "/src/apps/image-uploader";
 import { Route, Switch, location } from "@hyperapp/router";
 
-let createProductBasePath = "";
+let createProductBasePath;
+let createProductAction;
 
 const steps = {
   basicInfo: "",
@@ -27,19 +28,19 @@ const view = (state, actions) => (
     <Switch>
       <Route
         basepath={createProductBasePath}
-        path={`${steps.basicInfo}`}
+        path={`${createProductBasePath}/${steps.basicInfo}`}
         render={BasicInfo}
         who="product-creator"
       />
       <Route
         basepath={createProductBasePath}
-        path={`${steps.images}`}
+        path={`${createProductBasePath}/${steps.images}`}
         render={Images}
         who="product-creator"
       />
       <Route
         basepath={createProductBasePath}
-        path={`${steps.options}`}
+        path={`${createProductBasePath}/${steps.options}`}
         render={Options}
         who="product-creator"
       />
@@ -47,7 +48,7 @@ const view = (state, actions) => (
   </div>
 );
 
-const gatherData = (type, product) => ({ target: { value } }) => {
+const gatherData = (product, type) => ({ target: { value } }) => {
   product[type] = value;
 };
 
@@ -87,7 +88,7 @@ const BasicInfo = () => (state, actions) => (
         />
       </div>
     </fieldset>
-    {stepButtons(null, steps.images)}
+    {stepButtons(null, { path: steps.images })}
   </div>
 );
 
@@ -99,14 +100,31 @@ const Images = () => (state, actions) => (
         ImageUploaderApp(elem);
       }}
     />
-    {stepButtons(steps.basicInfo, steps.options)}
+    {stepButtons(
+      {
+        path: steps.basicInfo,
+        func: () => gatherImages(state.product)
+      },
+      {
+        path: steps.options,
+        func: () => gatherImages(state.product)
+      }
+    )}
   </div>
 );
 
 const Options = () => (state, actions) => (
   <div>
     options
-    {stepButtons(steps.images, steps.basicInfo)}
+    {stepButtons(
+      { path: steps.images },
+      {
+        path: "/",
+        func: () => {
+          createProductAction(state.product);
+        }
+      }
+    )}
   </div>
 );
 
@@ -117,8 +135,8 @@ const stepButtons = (previous, next) => (state, actions) => (
         <button
           class="uk-button uk-button-default"
           onclick={() => {
-            gatherImages(state.product);
-            actions.createProductNextStep(previous);
+            previous.func && previous.func();
+            actions.createProductNextStep(previous.path);
           }}
         >
           Previous
@@ -128,8 +146,8 @@ const stepButtons = (previous, next) => (state, actions) => (
         <button
           class="uk-button uk-button-primary"
           onclick={() => {
-            gatherImages(state.product);
-            actions.createProductNextStep(next);
+            next.func && next.func();
+            actions.createProductNextStep(next.path);
           }}
         >
           Next
@@ -139,9 +157,10 @@ const stepButtons = (previous, next) => (state, actions) => (
   </div>
 );
 
-export const ProductCreatorApp = ({ path, container }) => {
+export const ProductCreatorApp = ({ path, container, createProduct }) => {
   createProductBasePath = path;
+  createProductAction = createProduct;
   const ap = app(state, actions, view, container);
-  location.subscribe(ap.location);
+  location.subscribe(ap.location, true);
   return ap;
 };

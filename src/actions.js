@@ -43,7 +43,7 @@ export const setupActions = server => ({
         });
       });
   },
-  productCreated: v => state => {
+  productCreated: v => (state, actions) => {
     setTimeout(() => actions.fetchImages(), 1000);
     return {
       products: [...state.products, v]

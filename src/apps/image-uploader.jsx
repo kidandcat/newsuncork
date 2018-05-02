@@ -81,7 +81,6 @@ const view = (state, actions) => (
 );
 
 const processFile = (state, actions) => event => {
-  console.log("activeCropper", activeCropper);
   if (activeCropper) {
     const img = activeCropper.element;
     activeCropper.destroy();
