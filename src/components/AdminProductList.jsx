@@ -7,7 +7,9 @@ export const AdminProductList = () => (state, actions) => (
     <thead>
       <tr>
         {state.products[0] &&
-          Object.keys(state.products[0]).map(k => <th>{k}</th>)}
+          Object.keys(state.products[0]).map(
+            k => k !== "createdAt" && k !== "updatedAt" && <th>{k}</th>
+          )}
       </tr>
     </thead>
     <tbody>
@@ -36,17 +38,9 @@ const processField = (state, p, k) => {
     case "description":
       return <ModifyTextarea id={p.id} field={k} data={p[k]} />;
     case "createdAt":
-      return (
-        <td style={{ lineHeight: LINE_HEIGHT }}>
-          {new Date(p[k]).toLocaleString()}
-        </td>
-      );
+      return;
     case "updatedAt":
-      return (
-        <td style={{ lineHeight: LINE_HEIGHT }}>
-          {new Date(p[k]).toLocaleString()}
-        </td>
-      );
+      return;
     default:
       return <ModifyField id={p.id} field={k} data={p[k]} />;
   }
