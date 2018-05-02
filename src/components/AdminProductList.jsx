@@ -35,6 +35,8 @@ const processField = (state, p, k) => {
           ))}
         </td>
       );
+    case "name":
+      return <ModifyField size="150px" id={p.id} field={k} data={p[k]} />;
     case "description":
       return <ModifyTextarea id={p.id} field={k} data={p[k]} />;
     case "createdAt":

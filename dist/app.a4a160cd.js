@@ -6842,6 +6842,8 @@ var processField = function processField(state, p, k) {
           });
         })
       );
+    case "name":
+      return (0, _hyperapp.h)(ModifyField, { size: "150px", id: p.id, field: k, data: p[k] });
     case "description":
       return (0, _hyperapp.h)(ModifyTextarea, { id: p.id, field: k, data: p[k] });
     case "createdAt":
@@ -7026,7 +7028,7 @@ var Root = exports.Root = function Root(state, actions) {
     )
   );
 };
-},{"hyperapp":9,"/src/components/Header":14,"/src/components/Footer":15,"/src/components/ProductInfo":16,"/src/components/ProductIndex":17,"/src/components/CreateProduct":18,"/src/components/SideMenu":19,"/src/components/AuthModal":20,"/src/components/Loading":21,"/src/components/AdminDashboard":22,"@hyperapp/router":10}],13:[function(require,module,exports) {
+},{"hyperapp":9,"/src/components/Header":14,"/src/components/Footer":15,"/src/components/ProductInfo":16,"/src/components/ProductIndex":17,"/src/components/CreateProduct":18,"/src/components/SideMenu":19,"/src/components/AuthModal":20,"/src/components/Loading":21,"/src/components/AdminDashboard":22,"@hyperapp/router":10}],12:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7275,7 +7277,7 @@ var setupActions = exports.setupActions = function setupActions(server) {
     }
   };
 };
-},{"@hyperapp/router":10,"/src/utils":13,"sweetalert":28}],6:[function(require,module,exports) {
+},{"@hyperapp/router":10,"/src/utils":12,"sweetalert":28}],6:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7289,7 +7291,7 @@ var setupListeners = exports.setupListeners = function setupListeners(server, ac
     actions.getProducts();
   });
 };
-},{}],12:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 module.exports="/loading.cf98aaef.gif";
 },{}],7:[function(require,module,exports) {
 "use strict";
@@ -7317,7 +7319,7 @@ var state = exports.state = {
   logged: false,
   loading: true
 };
-},{"@hyperapp/router":10,"./assets/loading.gif":12}],72:[function(require,module,exports) {
+},{"@hyperapp/router":10,"./assets/loading.gif":13}],72:[function(require,module,exports) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -8167,7 +8169,7 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
-},{}],78:[function(require,module,exports) {
+},{}],79:[function(require,module,exports) {
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -8755,7 +8757,7 @@ function localstorage() {
     return window.localStorage;
   } catch (e) {}
 }
-},{"./debug":78,"process":69}],91:[function(require,module,exports) {
+},{"./debug":79,"process":69}],90:[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9108,7 +9110,7 @@ module.exports = function () {
     app.mixins.push(eventMixin);
   };
 };
-},{"events":91,"uberproto":58}],63:[function(require,module,exports) {
+},{"events":90,"uberproto":58}],63:[function(require,module,exports) {
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var { hooks: hooks, validateArguments: validateArguments, isPromise: isPromise } = require('@feathersjs/commons');
@@ -9973,7 +9975,7 @@ var hooks = {
 };
 
 module.exports = hooks;
-},{"./populate-header":66,"./populate-access-token":67,"./populate-entity":68}],102:[function(require,module,exports) {
+},{"./populate-header":66,"./populate-access-token":67,"./populate-entity":68}],103:[function(require,module,exports) {
 /**
  * The code was extracted from:
  * https://github.com/davidchambers/Base64.js
@@ -10013,7 +10015,7 @@ function polyfill (input) {
 
 module.exports = typeof window !== 'undefined' && window.atob && window.atob.bind(window) || polyfill;
 
-},{}],94:[function(require,module,exports) {
+},{}],95:[function(require,module,exports) {
 var atob = require('./atob');
 
 function b64DecodeUnicode(str) {
@@ -10048,7 +10050,7 @@ module.exports = function(str) {
   }
 };
 
-},{"./atob":102}],77:[function(require,module,exports) {
+},{"./atob":103}],77:[function(require,module,exports) {
 'use strict';
 
 var base64_url_decode = require('./base64_url_decode');
@@ -10076,7 +10078,7 @@ module.exports = function (token,options) {
 
 module.exports.InvalidTokenError = InvalidTokenError;
 
-},{"./base64_url_decode":94}],64:[function(require,module,exports) {
+},{"./base64_url_decode":95}],64:[function(require,module,exports) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11788,7 +11790,7 @@ function url (uri, loc) {
   return obj;
 }
 
-},{"parseuri":83,"debug":57}],79:[function(require,module,exports) {
+},{"parseuri":83,"debug":57}],80:[function(require,module,exports) {
 
 /**
  * Expose `Emitter`.
@@ -11953,7 +11955,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],90:[function(require,module,exports) {
+},{}],91:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
@@ -12131,7 +12133,7 @@ exports.removeBlobs = function(data, callback) {
   }
 };
 
-},{"isarray":90,"./is-buffer":71}],60:[function(require,module,exports) {
+},{"isarray":91,"./is-buffer":71}],60:[function(require,module,exports) {
 
 /**
  * Module dependencies.
@@ -12550,7 +12552,7 @@ function error(msg) {
   };
 }
 
-},{"debug":57,"component-emitter":79,"./binary":70,"isarray":90,"./is-buffer":71}],118:[function(require,module,exports) {
+},{"debug":57,"component-emitter":80,"./binary":70,"isarray":91,"./is-buffer":71}],118:[function(require,module,exports) {
 
 /**
  * Module exports.
@@ -13804,7 +13806,7 @@ exports.decodePayloadAsBinary = function (data, binaryType, callback) {
   });
 };
 
-},{"./keys":106,"has-binary2":89,"arraybuffer.slice":108,"after":109,"./utf8":107,"base64-arraybuffer":110,"blob":111}],103:[function(require,module,exports) {
+},{"./keys":106,"has-binary2":89,"arraybuffer.slice":108,"after":109,"./utf8":107,"base64-arraybuffer":110,"blob":111}],102:[function(require,module,exports) {
 /**
  * Module dependencies.
  */
@@ -13963,7 +13965,7 @@ Transport.prototype.onClose = function () {
   this.emit('close');
 };
 
-},{"engine.io-parser":100,"component-emitter":79}],88:[function(require,module,exports) {
+},{"engine.io-parser":100,"component-emitter":80}],88:[function(require,module,exports) {
 /**
  * Compiles a querystring
  * Returns string representation of the object
@@ -14327,7 +14329,7 @@ Polling.prototype.uri = function () {
   return schema + '://' + (ipv6 ? '[' + this.hostname + ']' : this.hostname) + port + this.path + query;
 };
 
-},{"../transport":103,"parseqs":88,"engine.io-parser":100,"component-inherit":120,"yeast":119,"debug":57,"xmlhttprequest-ssl":112}],113:[function(require,module,exports) {
+},{"../transport":102,"parseqs":88,"engine.io-parser":100,"component-inherit":120,"yeast":119,"debug":57,"xmlhttprequest-ssl":112}],113:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Module requirements.
@@ -14742,7 +14744,7 @@ function unloadHandler () {
   }
 }
 
-},{"xmlhttprequest-ssl":112,"./polling":117,"component-emitter":79,"component-inherit":120,"debug":57}],114:[function(require,module,exports) {
+},{"xmlhttprequest-ssl":112,"./polling":117,"component-emitter":80,"component-inherit":120,"debug":57}],114:[function(require,module,exports) {
 var global = (1,eval)("this");
 
 /**
@@ -15267,7 +15269,7 @@ WS.prototype.check = function () {
   return !!WebSocket && !('__initialize' in WebSocket && this.name === WS.prototype.name);
 };
 
-},{"../transport":103,"engine.io-parser":100,"parseqs":88,"component-inherit":120,"yeast":119,"debug":57,"ws":116}],105:[function(require,module,exports) {
+},{"../transport":102,"engine.io-parser":100,"parseqs":88,"component-inherit":120,"yeast":119,"debug":57,"ws":116}],105:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Module dependencies
@@ -15334,7 +15336,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],95:[function(require,module,exports) {
+},{}],94:[function(require,module,exports) {
 var global = (1,eval)("this");
 /**
  * Module dependencies.
@@ -16080,7 +16082,7 @@ Socket.prototype.filterUpgrades = function (upgrades) {
   return filteredUpgrades;
 };
 
-},{"./transports/index":105,"component-emitter":79,"debug":57,"indexof":85,"engine.io-parser":100,"parseuri":83,"parseqs":88,"./transport":103}],80:[function(require,module,exports) {
+},{"./transports/index":105,"component-emitter":80,"debug":57,"indexof":85,"engine.io-parser":100,"parseuri":83,"parseqs":88,"./transport":102}],78:[function(require,module,exports) {
 
 module.exports = require('./socket');
 
@@ -16092,7 +16094,7 @@ module.exports = require('./socket');
  */
 module.exports.parser = require('engine.io-parser');
 
-},{"./socket":95,"engine.io-parser":100}],87:[function(require,module,exports) {
+},{"./socket":94,"engine.io-parser":100}],87:[function(require,module,exports) {
 module.exports = toArray
 
 function toArray(list, index) {
@@ -16595,7 +16597,7 @@ Socket.prototype.binary = function (binary) {
   return this;
 };
 
-},{"socket.io-parser":60,"component-emitter":79,"to-array":87,"./on":65,"component-bind":84,"debug":57,"parseqs":88,"has-binary2":89}],86:[function(require,module,exports) {
+},{"socket.io-parser":60,"component-emitter":80,"to-array":87,"./on":65,"component-bind":84,"debug":57,"parseqs":88,"has-binary2":89}],86:[function(require,module,exports) {
 
 /**
  * Expose `Backoff`.
@@ -17257,7 +17259,7 @@ Manager.prototype.onreconnect = function () {
   this.emitAll('reconnect', attempt);
 };
 
-},{"engine.io-client":80,"./socket":53,"component-emitter":79,"socket.io-parser":60,"./on":65,"component-bind":84,"debug":57,"indexof":85,"backo2":86}],33:[function(require,module,exports) {
+},{"engine.io-client":78,"./socket":53,"component-emitter":80,"socket.io-parser":60,"./on":65,"component-bind":84,"debug":57,"indexof":85,"backo2":86}],33:[function(require,module,exports) {
 
 /**
  * Module dependencies.
@@ -17407,7 +17409,7 @@ server.configure((0, _authenticationClient2.default)({
 }));
 
 exports.default = server;
-},{"@feathersjs/feathers":29,"@feathersjs/socketio-client":30,"@feathersjs/authentication-client":31,"@feathersjs/rest-client":32,"socket.io-client":33,"/src/utils":13}],54:[function(require,module,exports) {
+},{"@feathersjs/feathers":29,"@feathersjs/socketio-client":30,"@feathersjs/authentication-client":31,"@feathersjs/rest-client":32,"socket.io-client":33,"/src/utils":12}],54:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -17537,7 +17539,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52740' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53105' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
