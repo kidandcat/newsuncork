@@ -8,7 +8,8 @@ export const CreateProductStepByStep = ({ match }) => (state, actions) => (
       ProductCreatorApp({
         path: match.path,
         container: elem,
-        createProduct: actions.createProduct
+        createProduct: actions.create,
+        options: state.optiontypes
       })
     }
   />

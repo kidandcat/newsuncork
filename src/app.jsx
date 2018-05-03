@@ -14,6 +14,7 @@ load(main);
 
 function load(actions) {
   setupListeners(server, main);
-  actions.getProducts();
+  actions.getService("product");
+  actions.getService("optiontype");
   actions.checkAuthentication();
 }

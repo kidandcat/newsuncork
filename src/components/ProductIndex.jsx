@@ -13,7 +13,7 @@ export const ProductIndex = () => (state, actions) => (
           <SmallProduct
             click={() => actions.location.go(`/product/${p.id}`)}
             remove={() => {
-              actions.deleteProduct(p);
+              actions.delete({ id: p.id, service: "product" });
             }}
             logged={state.logged}
           >

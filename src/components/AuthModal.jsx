@@ -12,7 +12,7 @@ export const AuthModal = () => (state, actions) => (
       <input class="uk-input" type="password" id="pass" />
     </div>
     <button
-      class="uk-button"
+      class="uk-button uk-button-default"
       onclick={() => {
         actions.authenticate({
           user: document.querySelector("#user").value,

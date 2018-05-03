@@ -4,59 +4,60 @@ import swal from "sweetalert";
 
 export const setupActions = server => ({
   location: location.actions,
-  modifyProduct: ({ id, data }) => state => {
+  async: v => state => v,
+  modify: ({ id, data, service }) => state => {
     server
-      .service("product")
+      .service(service)
       .patch(id, data)
       .then(() => {
         swal({
-          title: "Product modified",
-          text: "Your product was successfully modified!",
+          title: `${service} modified`,
+          text: `Your ${service} was successfully modified!`,
           icon: "success"
         });
       })
       .catch(err => {
         swal({
-          title: "Error modifying product",
+          title: `Error modifying ${service}`,
           text: err.message,
           icon: "error"
         });
       });
   },
-  createProduct: v => state => {
+  create: ({ service, data }) => state => {
     server
-      .service("product")
-      .create(v)
+      .service(service)
+      .create(data)
       .then(() => {
         swal({
-          title: "Product created",
-          text: "Your new product was successfully created!",
+          title: `${service} created`,
+          text: `Your new ${service} was successfully created!`,
           icon: "success"
         });
       })
       .catch(err => {
         swal({
-          title: "Error creating product",
+          title: `Error creating ${service}`,
           text: err.message,
           icon: "error"
         });
       });
   },
-  deleteProduct: v => (state, actions) => {
+  delete: ({ service, id }) => (state, actions) => {
     server
-      .service("product")
-      .remove(v.id)
+      .service(service)
+      .remove(id)
       .then(() => {
         swal({
-          title: "Product removed successfully",
-          text: "Your product was removed successfully",
+          title: `${service} removed successfully`,
+          text: `Your ${service} was removed successfully`,
           icon: "success"
         });
-        actions.getProducts();
+        actions.getService("product");
       })
       .catch(err => {
         swal({
-          title: "Error removing product",
+          title: `Error removing ${service}`,
           text: err.message,
           icon: "error"
         });
@@ -66,6 +67,11 @@ export const setupActions = server => ({
     setTimeout(() => actions.fetchImages(), 1000);
     return {
       products: [...state.products, v]
+    };
+  },
+  optionCreated: v => (state, actions) => {
+    return {
+      optiontypes: [...state.optiontypes, v]
     };
   },
   addImage: ({ index, data }) => state => {
@@ -90,21 +96,22 @@ export const setupActions = server => ({
       }
     }
   },
-  addProducts: v => state => ({ products: v }),
   loading: v => state => ({ loading: v }),
-  getProducts: () => (state, actions) => {
+  getService: service => (state, actions) => {
     actions.loading(true);
     server
-      .service("product")
+      .service(service)
       .find()
-      .then(prods => {
-        actions.addProducts(prods);
+      .then(res => {
+        actions.async({
+          [`${service}s`]: res
+        });
         actions.loading(false);
         actions.fetchImages();
       })
       .catch(err => {
         swal({
-          title: "Error fetching products",
+          title: `Error fetching ${service}s`,
           text: err.message,
           icon: "error"
         });

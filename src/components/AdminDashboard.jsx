@@ -3,6 +3,7 @@ import { Link } from "@hyperapp/router";
 import { SmallProduct } from "/src/components/SmallProduct";
 import { CreateProductStepByStep } from "/src/components/CreateProduct";
 import { AdminProductList } from "/src/components/AdminProductList";
+import { AdminOptions } from "/src/components/AdminOptions";
 import { Route, Switch } from "@hyperapp/router";
 
 export const AdminDashboard = () => (state, actions) => (
@@ -14,6 +15,7 @@ export const AdminDashboard = () => (state, actions) => (
       render={CreateProductStepByStep}
     />
     <Route parent path="/admin/product/list" render={AdminProductList} />
+    <Route parent path="/admin/options/list" render={AdminOptions} />
   </Switch>
 );
 
@@ -30,6 +32,12 @@ const Dashboard = () => (state, actions) => (
       onclick={() => actions.location.go("/admin/product/list")}
     >
       <span uk-icon="icon: list; ratio: 3" />
+    </div>
+    <div
+      class="admin-button"
+      onclick={() => actions.location.go("/admin/options/list")}
+    >
+      <span uk-icon="icon: nut; ratio: 3" />
     </div>
   </div>
 );

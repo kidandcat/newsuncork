@@ -4,6 +4,7 @@ import { Route, Switch, location } from "@hyperapp/router";
 
 let createProductBasePath;
 let createProductAction;
+let productOptions;
 
 const steps = () => ({
   basicInfo: `${createProductBasePath}/`,
@@ -13,7 +14,9 @@ const steps = () => ({
 
 const state = {
   location: location.state,
-  product: {}
+  product: {
+    options: []
+  }
 };
 
 const actions = {
@@ -111,13 +114,32 @@ const Images = () => (state, actions) => (
 
 const Options = () => (state, actions) => (
   <div>
-    options
+    Options:
+    {productOptions.map(o => (
+      <div>
+        <button
+          data-id={o.id}
+          style={{
+            margin: "5px"
+          }}
+          onclick={e => {
+            e.target.classList.toggle("uk-button-primary");
+          }}
+          class="uk-button uk-button-default"
+        >
+          {o.name}
+        </button>
+      </div>
+    ))}
     {stepButtons(
       { path: steps().images },
       {
         path: "/admin",
         func: () => {
-          createProductAction(state.product);
+          for (let el of document.querySelectorAll(".uk-button-primary")) {
+            state.product.options.push(el.dataset.id);
+          }
+          createProductAction({ service: "product", data: state.product });
         },
         text: "Create Product"
       }
@@ -154,8 +176,14 @@ const stepButtons = (previous, next) => (state, actions) => (
   </div>
 );
 
-export const ProductCreatorApp = ({ path, container, createProduct }) => {
+export const ProductCreatorApp = ({
+  path,
+  container,
+  createProduct,
+  options
+}) => {
   createProductBasePath = path;
+  productOptions = options;
   createProductAction = createProduct;
   const ap = app(state, actions, view, container);
   location.subscribe(ap.location, true);

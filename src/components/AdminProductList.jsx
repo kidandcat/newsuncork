@@ -52,7 +52,8 @@ const ModifyField = ({ id, field, data, size }) => (state, actions) => (
   <td style={{ lineHeight: LINE_HEIGHT, width: size || "" }}>
     <input
       onchange={e =>
-        actions.modifyProduct({
+        actions.modify({
+          service: "product",
           id,
           data: {
             [field]:
@@ -77,7 +78,8 @@ const ModifyTextarea = ({ id, field, data }) => (state, actions) => (
       style={{ height: LINE_HEIGHT, lineHeight: "1em" }}
       class="uk-input"
       onchange={e =>
-        actions.modifyProduct({
+        actions.modify({
+          service: "product",
           id,
           data: {
             [field]: e.target.value
