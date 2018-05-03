@@ -18,7 +18,7 @@ export const AuthModal = () => (state, actions) => (
           user: document.querySelector("#user").value,
           pass: document.querySelector("#pass").value
         });
-        actions.location.go(`/`);
+        actions.location.go(`/admin`);
       }}
     >
       Log in

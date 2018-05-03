@@ -1,16 +1,9 @@
 import { h } from "hyperapp";
 import { Link } from "@hyperapp/router";
+import logo from "../assets/logo.png";
 
 export const Header = () => (state, actions) => (
-  <div
-    oncreate={() => {
-      actions.location.go("/");
-      return;
-      window.UIkit.sticky(document.querySelector("#navbar"), {
-        selTarget: "#navbar"
-      });
-    }}
-  >
+  <div>
     <nav
       id="navbar"
       uk-navbar
@@ -41,7 +34,7 @@ export const Header = () => (state, actions) => (
                   actions.location.go("/");
                 }}
                 class="logo"
-                src="/assets/logo.png"
+                src={logo}
                 alt="logo"
               />
             </a>
